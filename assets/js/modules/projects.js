@@ -109,7 +109,7 @@ class Projects {
    * Cria card de projeto
    */
   createProjectCard(project) {
-    const imageUrl = project.image || './assets/images/projects/placeholder.jpg';
+    const imageUrl = project.image || '/assets/images/projects/placeholder.jpg';
     const technologies = project.technologies || [];
     
     return `
@@ -225,7 +225,7 @@ class Projects {
     project.views = (project.views || 0) + 1;
     this.saveProjectData(project);
 
-    const imageUrl = project.image || './assets/images/projects/placeholder.jpg';
+    const imageUrl = project.image || '/assets/images/projects/placeholder.jpg';
     const technologies = project.technologies || [];
 
     this.modalContent.innerHTML = `
