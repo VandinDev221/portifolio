@@ -6,7 +6,7 @@
     "longDescription": "Plataforma web desenvolvida com HTML, CSS, JavaScript, PHP e MySQL, focada em atividades diárias e bem-estar. O projeto oferece funcionalidades interativas para ajudar os usuários a acompanhar e otimizar diferentes aspectos do seu bem-estar diário. Funcionalidades principais: Contagem de Tempo para medir atividades diárias, Registro de Caminhadas com acompanhamento de distância e gráficos de progresso, Tempo de Estudos com organização de sessões e gráficos diários/semanais/mensais/anuais, Metas Nutricionais com acompanhamento de proteínas e carboidratos, Monitoramento de Sono com visualização de tendências, Jogos interativos com acompanhamento de desempenho, e integração PWA para acesso fluido em desktop e dispositivos móveis com experiência de app nativo. A plataforma está no ar e oferece gráficos dinâmicos e métricas simples de entender.",
     "category": "web",
     "technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Bootstrap", "PWA", "Chart.js"],
-    "image": "/assets/images/projects/placeholder.jpg",
+    "image": "/assets/images/projects/vida-saudavel.jpg",
     "liveUrl": "https://vida-saudavel.com",
     "githubUrl": "https://github.com/seuuser/vida-saudavel",
     "featured": true,
