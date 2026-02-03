@@ -174,7 +174,10 @@ class Contact {
    */
   async submitForm() {
     const formData = new FormData(this.form);
-    const formId = this.form.getAttribute('data-formspree-id')?.trim();
+    let formId = this.form.getAttribute('data-formspree-id')?.trim() || '';
+    // Aceita só o ID (ex: mpqlgrvn) ou URL completa; extrai o ID se for URL
+    const idMatch = formId.match(/formspree\.io\/f\/([a-z0-9]+)/i);
+    if (idMatch) formId = idMatch[1];
 
     if (formId && formId !== 'seu_id_formspree') {
       const response = await fetch(`https://formspree.io/f/${formId}`, {
