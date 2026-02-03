@@ -39,9 +39,13 @@ class Contact {
     let isValid = true;
     let errorMessage = '';
 
-    // Remove classes anteriores
+    // Remove classes anteriores e limpa erro
     field.classList.remove('error', 'success');
-    this.clearError(field);
+    const errEl = field.parentElement?.querySelector('.contact__form-error');
+    if (errEl) {
+      errEl.classList.remove('show');
+      errEl.textContent = '';
+    }
 
     // Validação de campo vazio
     if (field.hasAttribute('required') && !value) {
@@ -67,11 +71,14 @@ class Contact {
       }
     }
 
-    // Validação de mensagem
-    if (name === 'message' && value) {
-      if (value.length < 10) {
+    // Validação de mensagem (obrigatório e mínimo 10 caracteres)
+    if (name === 'message') {
+      if (field.hasAttribute('required') && !value) {
         isValid = false;
-        errorMessage = 'Mensagem deve ter pelo menos 10 caracteres';
+        errorMessage = 'Este campo é obrigatório';
+      } else if (value && value.length < 10) {
+        isValid = false;
+        errorMessage = 'A mensagem deve ter pelo menos 10 caracteres';
       }
     }
 
@@ -106,11 +113,12 @@ class Contact {
    * Limpa erro do campo
    */
   clearError(field) {
-    const errorElement = field.parentElement.querySelector('.contact__form-error');
+    const errorElement = field.parentElement?.querySelector('.contact__form-error');
     if (errorElement) {
       errorElement.classList.remove('show');
+      errorElement.textContent = '';
     }
-    field.classList.remove('error');
+    field.classList.remove('error', 'success');
   }
 
   /**
@@ -162,23 +170,26 @@ class Contact {
   }
 
   /**
-   * Submete formulário (mock)
+   * Submete formulário (Formspree ou fallback)
    */
   async submitForm() {
     const formData = new FormData(this.form);
-    const data = Object.fromEntries(formData);
+    const formId = this.form.getAttribute('data-formspree-id')?.trim();
 
-    // Simula delay de rede
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    if (formId && formId !== 'seu_id_formspree') {
+      const response = await fetch(`https://formspree.io/f/${formId}`, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Falha no envio');
+      return result;
+    }
 
-    // Aqui você faria a requisição real:
-    // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // });
-    
-    console.log('Form data:', data);
+    // Sem Formspree configurado: simula envio (configure data-formspree-id no form)
+    await new Promise(resolve => setTimeout(resolve, 1200));
+    console.log('Dados do formulário:', Object.fromEntries(formData));
     return { success: true };
   }
 
