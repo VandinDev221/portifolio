@@ -9,11 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .js"
   },
-  "keywords": [
-    "portfolio",
-    "web",
-    "interactive"
-  ],
+  "keywords": ["portfolio", "web", "interactive"],
   "author": "",
   "license": "MIT",
   "dependencies": {
