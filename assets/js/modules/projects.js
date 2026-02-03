@@ -12,6 +12,8 @@ class Projects {
     this.modal = document.querySelector('.projects__modal');
     this.modalContent = document.querySelector('.projects__modal-content');
     this.modalClose = document.querySelector('.projects__modal-close');
+    this.devOverlay = document.getElementById('projects-dev-overlay');
+    this.devOverlayClose = document.getElementById('projects-dev-overlay-close');
     this.projects = [];
     this.activeFilter = 'all';
 
@@ -22,6 +24,7 @@ class Projects {
     await this.loadProjects();
     this.setupFilters();
     this.setupModal();
+    this.setupDevOverlay();
     this.renderProjects();
   }
 
@@ -101,6 +104,14 @@ class Projects {
       });
     });
 
+    // Botão "em desenvolvimento" no card (ícone 🔗)
+    this.projectsContainer.querySelectorAll('[data-dev-trigger]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.openDevOverlay();
+      });
+    });
+
     // Adiciona animações
     this.animateCards();
   }
@@ -121,13 +132,14 @@ class Projects {
                class="projects__card-image"
                loading="lazy">
           <div class="projects__card-overlay">
-            <a href="${project.liveUrl || '#'}" 
+            ${project.inDevelopment
+              ? `<button type="button" class="projects__card-overlay-link projects__card-overlay-link--dev" data-dev-trigger onclick="event.stopPropagation()" aria-label="Ver projeto">🔗</button>`
+              : `<a href="${project.liveUrl || '#'}" 
                class="projects__card-overlay-link" 
                target="_blank" 
                rel="noopener noreferrer"
-               onclick="event.stopPropagation()">
-              🔗
-            </a>
+               onclick="event.stopPropagation()">🔗</a>`
+            }
             <a href="${project.githubUrl || '#'}" 
                class="projects__card-overlay-link" 
                target="_blank" 
@@ -216,6 +228,35 @@ class Projects {
   }
 
   /**
+   * Configura overlay "em desenvolvimento"
+   */
+  setupDevOverlay() {
+    if (!this.devOverlay || !this.devOverlayClose) return;
+    this.devOverlayClose.addEventListener('click', () => this.closeDevOverlay());
+    this.devOverlay.addEventListener('click', (e) => {
+      if (e.target === this.devOverlay) this.closeDevOverlay();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.devOverlay.classList.contains('active')) {
+        this.closeDevOverlay();
+      }
+    });
+  }
+
+  openDevOverlay() {
+    if (!this.devOverlay) return;
+    this.devOverlay.classList.add('active');
+    this.devOverlay.setAttribute('aria-hidden', 'false');
+    this.devOverlayClose?.focus();
+  }
+
+  closeDevOverlay() {
+    if (!this.devOverlay) return;
+    this.devOverlay.classList.remove('active');
+    this.devOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  /**
    * Abre modal com detalhes do projeto
    */
   openModal(project) {
@@ -242,14 +283,22 @@ class Projects {
           ).join('')}
         </div>
         <div class="projects__modal-links">
-          ${project.liveUrl ? `
+          ${project.liveUrl ? (project.inDevelopment
+            ? `
+            <button type="button" 
+                    class="btn btn-primary projects__modal-btn-dev" 
+                    data-dev-trigger>
+              Ver Projeto
+            </button>
+          `
+            : `
             <a href="${project.liveUrl}" 
                class="btn btn-primary" 
                target="_blank" 
                rel="noopener noreferrer">
               Ver Projeto
             </a>
-          ` : ''}
+          `) : ''}
           ${project.githubUrl ? `
             <a href="${project.githubUrl}" 
                class="btn" 
@@ -269,6 +318,15 @@ class Projects {
     this.modalClose = this.modal.querySelector('.projects__modal-close');
     if (this.modalClose) {
       this.modalClose.addEventListener('click', () => this.closeModal());
+    }
+
+    // Botão "Ver Projeto" para projeto em desenvolvimento
+    const devTrigger = this.modal.querySelector('[data-dev-trigger]');
+    if (devTrigger) {
+      devTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openDevOverlay();
+      });
     }
   }
 

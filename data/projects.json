@@ -11,7 +11,8 @@
     "githubUrl": "https://github.com/seuuser/vida-saudavel",
     "featured": true,
     "likes": 0,
-    "views": 0
+    "views": 0,
+    "inDevelopment": true
   },
   {
     "id": 3,

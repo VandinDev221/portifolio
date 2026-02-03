@@ -11,7 +11,8 @@
     "githubUrl": "https://github.com/seuuser/vida-saudavel",
     "featured": true,
     "likes": 0,
-    "views": 0
+    "views": 0,
+    "inDevelopment": true
   },
   {
     "id": 3,
@@ -39,7 +40,8 @@
     "githubUrl": "https://github.com/seuuser/todo-app",
     "featured": true,
     "likes": 28,
-    "views": 98
+    "views": 98,
+    "inDevelopment": true
   },
   {
     "id": 5,
@@ -53,7 +55,8 @@
     "githubUrl": "https://github.com/seuuser/dashboard",
     "featured": false,
     "likes": 35,
-    "views": 124
+    "views": 124,
+    "inDevelopment": true
   },
   {
     "id": 6,
@@ -67,7 +70,8 @@
     "githubUrl": "https://github.com/seuuser/landing-page",
     "featured": false,
     "likes": 19,
-    "views": 67
+    "views": 67,
+    "inDevelopment": true
   },
   {
     "id": 7,
@@ -81,7 +85,8 @@
     "githubUrl": "https://github.com/seuuser/music-app",
     "featured": false,
     "likes": 31,
-    "views": 112
+    "views": 112,
+    "inDevelopment": true
   },
   {
     "id": 8,
@@ -95,6 +100,7 @@
     "githubUrl": "https://github.com/seuuser/design-system",
     "featured": true,
     "likes": 47,
-    "views": 189
+    "views": 189,
+    "inDevelopment": true
   }
 ]
