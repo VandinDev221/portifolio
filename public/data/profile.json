@@ -1,0 +1,19 @@
+{
+  "name": "Vanderson Carlos Andrade Lindoso",
+  "title": "Desenvolvedor Web Full Stack",
+  "tagline": "Criando soluções web modernas e funcionais",
+  "bio": "Desenvolvedor web apaixonado por tecnologia, com experiência em desenvolvimento full stack utilizando HTML, CSS, JavaScript, PHP e MySQL. Especializado em criar aplicações web interativas, responsivas e com foco na experiência do usuário.\n\nAtualmente trabalho com operações de data center e desenvolvimento de projetos pessoais, incluindo a plataforma 'Vida Saudável' - uma aplicação PWA completa para acompanhamento de atividades diárias e bem-estar.\n\nFormado em Desenvolvimento de Sistemas pelo IFMA e cursando Tecnologia em Desenvolvimento Web, sempre buscando aprender novas tecnologias e melhorar minhas habilidades para criar soluções cada vez melhores.",
+  "email": "lindosovanderson@gmail.com",
+  "location": "São Luís, Maranhão, Brasil",
+  "social": {
+    "github": "https://github.com/seuuser",
+    "linkedin": "https://linkedin.com/in/seuuser",
+    "twitter": "https://twitter.com/seuuser",
+    "instagram": "https://instagram.com/seuuser"
+  },
+  "stats": {
+    "projects": 3,
+    "clients": 2,
+    "experience": 2
+  }
+}

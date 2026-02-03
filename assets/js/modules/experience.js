@@ -22,7 +22,7 @@ class Experience {
    * Carrega experiências do JSON
    */
   async loadExperiences() {
-    const data = await fetchJSON('./data/experience.json');
+    const data = await fetchJSON('/data/experience.json');
     if (data) {
       this.experiences = data.sort((a, b) => {
         // Ordena por data (mais recente primeiro)

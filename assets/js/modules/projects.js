@@ -29,7 +29,7 @@ class Projects {
    * Carrega projetos do JSON
    */
   async loadProjects() {
-    const data = await fetchJSON('./data/projects.json');
+    const data = await fetchJSON('/data/projects.json');
     if (data) {
       this.projects = data;
       // Carrega likes/views do localStorage
