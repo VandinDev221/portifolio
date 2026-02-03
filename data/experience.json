@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "type": "work",
+    "title": "Operações de Data Center",
+    "company": "PB PROMOCAO DE VENDAS E INTERMEDIACAO DE NEGOCIOS",
+    "period": "Abr 2024 - Presente",
+    "description": "Responsável por operações de data center, análise de dados e suporte técnico. Desenvolvimento de habilidades analíticas e gestão de infraestrutura de TI.",
+    "technologies": ["Análise de Dados", "Infraestrutura de TI", "Data Center"]
+  },
+  {
+    "id": 2,
+    "type": "work",
+    "title": "Técnico de Redes",
+    "company": "CREATIVE PRODUTOS LTDA",
+    "period": "Mar 2024 - Abr 2024",
+    "description": "Responsável pela instalação, configuração, manutenção e suporte de redes de computadores e sistemas de telecomunicações. Trabalho em equipe e integração de sistemas.",
+    "technologies": ["Redes de Computadores", "Telecomunicações", "Suporte Técnico"]
+  },
+  {
+    "id": 3,
+    "type": "work",
+    "title": "Desenvolvedor Web",
+    "company": "Projeto Pessoal - IFMA",
+    "period": "Fev 2024 - Presente",
+    "description": "Desenvolvimento de projeto web completo utilizando HTML, CSS, JavaScript, PHP e MySQL. Plataforma 'Vida Saudável' focada em atividades diárias e bem-estar. Funcionalidades incluem: contagem de tempo, registro de caminhadas com gráficos, organização de estudos com métricas, metas nutricionais, monitoramento de sono, jogos interativos e integração PWA para experiência nativa em dispositivos móveis.",
+    "technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Bootstrap", "PWA", "Chart.js"]
+  },
+  {
+    "id": 4,
+    "type": "education",
+    "title": "Curso Superior de Tecnologia em Desenvolvimento Web",
+    "company": "Unopar  - Universidade Norte do Paraná ",
+    "period": "Mar 2024 - Dez 2026",
+    "description": "Curso focado no desenvolvimento de soluções web, abrangendo tanto o front-end quanto o back-end, com o uso de tecnologias como HTML, CSS, JavaScript, PHP, MySQL, entre outras. Desenvolvimento de habilidades para criar e otimizar sites dinâmicos e responsivos, com ênfase em usabilidade, performance e segurança. Principais competências: desenvolvimento de páginas e aplicações web interativas, criação e integração de bancos de dados, programação e automação de processos com JavaScript e PHP, melhoria da experiência do usuário (UX) e design responsivo, implementação de soluções de SEO e PWA, trabalho com frameworks e bibliotecas modernas.",
+    "technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "UX/UI", "SEO", "PWA", "Frameworks"]
+  },
+  {
+    "id": 5,
+    "type": "education",
+    "title": "Ensino Técnico em Desenvolvimento de Sistemas",
+    "company": "IFMA - Instituto Federal do Maranhão",
+    "period": "Mar 2022 - Jul 2023",
+    "description": "Formação técnica em desenvolvimento de sistemas, com foco em programação, banco de dados e desenvolvimento de software. Base sólida para desenvolvimento web e de aplicações.",
+    "technologies": ["Programação", "Banco de Dados", "Desenvolvimento de Software"]
+  }
+]

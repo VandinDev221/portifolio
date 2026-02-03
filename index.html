@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio profissional de desenvolvedor full stack - Projetos, habilidades e experiência">
+  <meta name="keywords" content="desenvolvedor, full stack, portfólio, web developer">
+  <meta name="author" content="Vanderson Carlos Andrade Lindoso">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seusite.com/">
+  <meta property="og:title" content="Portfólio Profissional">
+  <meta property="og:description" content="Portfólio profissional de desenvolvedor full stack">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://seusite.com/">
+  <meta property="twitter:title" content="Portfólio Profissional">
+  <meta property="twitter:description" content="Portfólio profissional de desenvolvedor full stack">
+  <meta property="twitter:image" content="/assets/images/og-image.jpg">
+  
+  <title>Vanderson Carlos Andrade Lindoso | Desenvolvedor Web Full Stack</title>
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Vanderson Carlos Andrade Lindoso",
+    "jobTitle": "Desenvolvedor Web Full Stack",
+    "url": "https://seusite.com",
+    "sameAs": [
+      "https://github.com/seuuser",
+      "https://linkedin.com/in/seuuser"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Intro / Apresentação -->
+  <div class="intro-overlay" id="intro-overlay" role="presentation" aria-live="polite">
+    <div class="intro-overlay__bg"></div>
+    <button type="button" class="intro-overlay__skip" id="intro-skip" aria-label="Pular introdução">
+      Pular 
+    </button>
+    <div class="intro-overlay__content">
+      <p class="intro-overlay__phrase intro-overlay__phrase--active" id="intro-phrase" data-index="0">
+        Já pensou em ter um site?
+      </p>
+      <p class="intro-overlay__cta" id="intro-cta" aria-hidden="true">
+        Venha conhecer meu trabalho!
+      </p>
+      <a href="#home" class="intro-overlay__btn" id="intro-btn" aria-hidden="true">Entrar</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <a href="#home" class="header__logo" aria-label="Logo">Portfolio</a>
+      
+      <nav class="header__nav" role="navigation" aria-label="Navegação principal">
+        <ul class="header__nav-list">
+          <li><a href="#home" class="header__nav-link">Início</a></li>
+          <li><a href="#about" class="header__nav-link">Sobre</a></li>
+          <li><a href="#projects" class="header__nav-link">Projetos</a></li>
+          <li><a href="#skills" class="header__nav-link">Habilidades</a></li>
+          <li><a href="#experience" class="header__nav-link">Experiência</a></li>
+          <li><a href="#contact" class="header__nav-link">Contato</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header__actions">
+        <button class="header__theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+          <span>🌙</span>
+        </button>
+        <button class="header__menu-toggle" aria-label="Menu mobile" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <nav class="header__mobile-menu" role="navigation" aria-label="Menu mobile">
+      <ul class="header__mobile-nav-list">
+        <li><a href="#home" class="header__mobile-nav-link">Início</a></li>
+        <li><a href="#about" class="header__mobile-nav-link">Sobre</a></li>
+        <li><a href="#projects" class="header__mobile-nav-link">Projetos</a></li>
+        <li><a href="#skills" class="header__mobile-nav-link">Habilidades</a></li>
+        <li><a href="#experience" class="header__mobile-nav-link">Experiência</a></li>
+        <li><a href="#contact" class="header__mobile-nav-link">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero section" role="main">
+    <div class="hero__container">
+      <p class="hero__greeting">Olá, meu nome é</p>
+      <h1 class="hero__name">Vanderson Carlos Andrade Lindoso</h1>
+      <h2 class="hero__title">Desenvolvedor Web Full Stack</h2>
+      <p class="hero__tagline">
+        Especializado em criar experiências web modernas e eficientes, 
+        transformando ideias em realidade através do código.
+      </p>
+      <span class="hero__typed" id="typed-text"></span>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+        <a href="#contact" class="btn">Entrar em Contato</a>
+      </div>
+    </div>
+   <!-- <a href="#about" class="hero__scroll-indicator" aria-label="Rolar para baixo">
+      <span>Scroll</span>
+    </a> -->
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about section" aria-labelledby="about-title">
+    <div class="about__container">
+      <h2 id="about-title" class="section-title">Sobre Mim</h2>
+      
+      <div class="about__content">
+        <div class="about__image-wrapper">
+          <img src="./assets/images/profile.jpg" 
+               alt="Foto de perfil" 
+               class="about__image"
+               loading="lazy">
+          <div class="about__image-overlay"></div>
+        </div>
+        
+        <div class="about__text">
+          <p>
+            Sou um desenvolvedor apaixonado por tecnologia, com foco em criar soluções web modernas 
+            e eficientes. Tenho experiência em desenvolvimento frontend e backend, sempre buscando 
+            aprender novas tecnologias e melhorar minhas habilidades.
+          </p>
+          <p>
+            Minha paixão pela programação começou quando descobri o poder de transformar ideias 
+            em realidade através do código. Desde então, tenho me dedicado a criar projetos que não 
+            apenas funcionam, mas que também proporcionam uma excelente experiência ao usuário.
+          </p>
+          <p>
+            Atualmente, trabalho com tecnologias como <span class="about__highlight">PHP</span>, 
+            <span class="about__highlight">Database</span>, 
+            <span class="about__highlight">React</span>, 
+            <span class="about__highlight">Node.js</span> e outras ferramentas modernas do 
+            ecossistema web.
+          </p>
+        </div>
+      </div>
+      
+      <div class="about__stats">
+        <div class="about__stat-card">
+          <span class="about__stat-number">10</span>
+          <span class="about__stat-label">Projetos</span>
+        </div>
+        <div class="about__stat-card">
+          <span class="about__stat-number">5</span>
+          <span class="about__stat-label">Clientes</span>
+        </div>
+        <div class="about__stat-card">
+          <span class="about__stat-number">2</span>
+          <span class="about__stat-label">Anos de Experiência</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects section" aria-labelledby="projects-title">
+    <div class="projects__container">
+      <h2 id="projects-title" class="section-title">Projetos</h2>
+      
+      <div class="projects__filters" role="tablist">
+        <button class="projects__filter-btn active" data-filter="all" role="tab" aria-selected="true">
+          Todos
+        </button>
+        <button class="projects__filter-btn" data-filter="web" role="tab" aria-selected="false">
+          Web
+        </button>
+        <button class="projects__filter-btn" data-filter="mobile" role="tab" aria-selected="false">
+          Mobile
+        </button>
+        <button class="projects__filter-btn" data-filter="design" role="tab" aria-selected="false">
+          Design
+        </button>
+      </div>
+      
+      <div class="projects__grid" role="list">
+        <!-- Projetos serão inseridos dinamicamente via JavaScript -->
+      </div>
+    </div>
+    
+    <!-- Modal de Projeto -->
+    <div class="projects__modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="projects__modal-backdrop"></div>
+      <div class="projects__modal-content">
+        <!-- Conteúdo será inserido dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills section" aria-labelledby="skills-title">
+    <div class="skills__container">
+      <h2 id="skills-title" class="section-title">Habilidades</h2>
+      
+      <div class="skills__grid">
+        <div class="skills__category">
+          <h3 class="skills__category-title">
+            <span class="skills__category-icon">💻</span>
+            Frontend
+          </h3>
+          <div class="skills__list">
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">React</span>
+                <span class="skills__item-percentage">90%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="90" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Experiência avançada com React e ecossistema</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">HTML</span>
+                <span class="skills__item-percentage">95%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="95" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">HTML5 semântico e acessível</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">JavaScript</span>
+                <span class="skills__item-percentage">95%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="95" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">JavaScript ES6+ e TypeScript</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">CSS/SCSS</span>
+                <span class="skills__item-percentage">90%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="90" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">CSS3, SCSS, Grid, Flexbox</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills__category">
+          <h3 class="skills__category-title">
+            <span class="skills__category-icon">⚙️</span>
+            Backend
+          </h3>
+          <div class="skills__list">
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Node.js</span>
+                <span class="skills__item-percentage">88%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="88" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Node.js, Express, APIs REST</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">PHP</span>
+                <span class="skills__item-percentage">85%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="85" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">PHP, Laravel, CodeIgniter</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Databases</span>
+                <span class="skills__item-percentage">80%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="80" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">MongoDB, PostgreSQL, MySQL</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills__category">
+          <h3 class="skills__category-title">
+            <span class="skills__category-icon">🛠️</span>
+            Ferramentas
+          </h3>
+          <div class="skills__list">
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Git</span>
+                <span class="skills__item-percentage">90%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="90" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Git, GitHub, GitLab</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Docker</span>
+                <span class="skills__item-percentage">70%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="70" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Docker, Docker Compose</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">AWS</span>
+                <span class="skills__item-percentage">65%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="65" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">AWS, Cloud Services</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience section" aria-labelledby="experience-title">
+    <div class="experience__container">
+      <h2 id="experience-title" class="section-title">Experiência</h2>
+      
+      <div class="experience__timeline" role="list">
+        <!-- Experiências serão inseridas dinamicamente via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section" aria-labelledby="contact-title">
+    <div class="contact__container">
+      <h2 id="contact-title" class="section-title">Contato</h2>
+      
+      <div class="contact__content">
+        <div class="contact__info">
+          <div class="contact__info-item">
+            <div class="contact__info-icon">📧</div>
+            <div class="contact__info-content">
+              <h3>Email</h3>
+              <p><a href="mailto:lindosovanderson@gmail.com">lindosovanderson@gmail.com</a></p>
+            </div>
+          </div>
+          
+          <div class="contact__info-item">
+            <div class="contact__info-icon">📍</div>
+            <div class="contact__info-content">
+              <h3>Localização</h3>
+              <p>São Luís, Maranhão, Brasil</p>
+            </div>
+          </div>
+          
+          <div class="contact__info-item">
+            <div class="contact__info-icon">💼</div>
+            <div class="contact__info-content">
+              <h3>Disponibilidade</h3>
+              <p>Aberto para novos projetos</p>
+            </div>
+          </div>
+          
+          <div class="contact__social">
+            <a href="https://github.com/seuuser" 
+               class="contact__social-link" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="GitHub">
+              📂
+            </a>
+            <a href="https://linkedin.com/in/seuuser" 
+               class="contact__social-link" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="LinkedIn">
+              💼
+            </a>
+            <a href="https://www.instagram.com/vandersonandrad__" 
+               class="contact__social-link" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Instagram">
+              📷
+            </a>
+          </div>
+        </div>
+        
+        <form class="contact__form" aria-label="Formulário de contato">
+          <div class="contact__form-group">
+            <label for="name" class="contact__form-label">
+              Nome <span class="required">*</span>
+            </label>
+            <input type="text" 
+                   id="name" 
+                   name="name" 
+                   class="contact__form-input" 
+                   required 
+                   aria-required="true"
+                   aria-describedby="name-error">
+            <span class="contact__form-error" id="name-error" role="alert"></span>
+          </div>
+          
+          <div class="contact__form-group">
+            <label for="email" class="contact__form-label">
+              Email <span class="required">*</span>
+            </label>
+            <input type="email" 
+                   id="email" 
+                   name="email" 
+                   class="contact__form-input" 
+                   required 
+                   aria-required="true"
+                   aria-describedby="email-error">
+            <span class="contact__form-error" id="email-error" role="alert"></span>
+          </div>
+          
+          <div class="contact__form-group">
+            <label for="subject" class="contact__form-label">
+              Assunto
+            </label>
+            <input type="text" 
+                   id="subject" 
+                   name="subject" 
+                   class="contact__form-input"
+                   aria-describedby="subject-error">
+            <span class="contact__form-error" id="subject-error" role="alert"></span>
+          </div>
+          
+          <div class="contact__form-group">
+            <label for="message" class="contact__form-label">
+              Mensagem <span class="required">*</span>
+            </label>
+            <textarea id="message" 
+                      name="message" 
+                      class="contact__form-textarea" 
+                      rows="5" 
+                      required 
+                      aria-required="true"
+                      aria-describedby="message-error"></textarea>
+            <span class="contact__form-error" id="message-error" role="alert"></span>
+          </div>
+          
+          <button type="submit" class="contact__form-submit">
+            Enviar Mensagem
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__content">
+        <div class="footer__social">
+          <a href="https://github.com/seuuser" 
+             class="footer__social-link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="GitHub">
+            📂
+          </a>
+          <a href="https://linkedin.com/in/seuuser" 
+             class="footer__social-link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="LinkedIn">
+            💼
+          </a>
+          <a href="https://www.instagram.com/vandersonandrad__" 
+             class="footer__social-link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="Instagram">
+            📷
+          </a>
+        </div>
+        <p class="footer__text">
+          © <span id="current-year">2025</span> Vanderson Carlos Andrade Lindoso. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Voltar ao topo">
+    ↑
+  </button>
+
+  <!-- Scripts -->
+  <script type="module" src="./assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/lib/typed.min.js"></script>
+  
+  <!-- Typed.js para efeito de digitação -->
+  <script>
+    // Atualiza ano no footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Configura Typed.js quando disponível
+    document.addEventListener('DOMContentLoaded', () => {
+      const typedElement = document.getElementById('typed-text');
+      if (typedElement && typeof Typed !== 'undefined') {
+        new Typed('#typed-text', {
+          strings: [
+            'Desenvolvedor Full Stack',
+            'Criador de Experiências Digitais',
+            'Apaixonado por Tecnologia',
+            'Sempre Aprendendo'
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 2000,
+          loop: true,
+          showCursor: true,
+          cursorChar: '|'
+        });
+      } else if (typedElement) {
+        // Fallback simples se Typed.js não estiver disponível
+        const strings = [
+          'Desenvolvedor Full Stack',
+          'Criador de Experiências Digitais',
+          'Apaixonado por Tecnologia'
+        ];
+        let currentIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+          const current = strings[currentIndex];
+          if (isDeleting) {
+            typedElement.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+              isDeleting = false;
+              currentIndex = (currentIndex + 1) % strings.length;
+            }
+          } else {
+            typedElement.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === current.length) {
+              isDeleting = true;
+              setTimeout(type, 2000);
+              return;
+            }
+          }
+          setTimeout(type, isDeleting ? 30 : 50);
+        }
+        type();
+      }
+    });
+  </script>
+</body>
+</html>

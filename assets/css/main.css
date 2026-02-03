@@ -1,0 +1,38 @@
+/* Importações */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+@import './utilities/variables.css';
+@import './utilities/animations.css';
+@import './utilities/utilities.css';
+@import './themes/dark.css';
+@import './themes/light.css';
+
+@import './components/intro.css';
+@import './components/header.css';
+@import './components/hero.css';
+@import './components/about.css';
+@import './components/projects.css';
+@import './components/skills.css';
+@import './components/experience.css';
+@import './components/contact.css';
+@import './components/footer.css';
+
+/* Estilos Globais Adicionais */
+body {
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* Smooth Scroll */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Loading State */
+.loading {
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.loading.loaded {
+  opacity: 1;
+}
