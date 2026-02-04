@@ -157,11 +157,15 @@ class Projects {
             </div>
           </div>
           <p class="projects__card-description">${project.description}</p>
+          ${technologies.length ? `
+          <p class="projects__card-tech-label">Tecnologias utilizadas:</p>
           <div class="projects__card-tech">
-            ${technologies.slice(0, 4).map(tech => 
+            ${technologies.slice(0, 6).map(tech => 
               `<span class="projects__card-tech-item">${tech}</span>`
             ).join('')}
+            ${technologies.length > 6 ? `<span class="projects__card-tech-item">+${technologies.length - 6}</span>` : ''}
           </div>
+          ` : ''}
           <div class="projects__card-footer">
             <div class="projects__card-stats">
               <span class="projects__card-stat">
@@ -276,12 +280,17 @@ class Projects {
              alt="${project.title}" 
              class="projects__modal-image">
         <h2 class="projects__modal-title">${project.title}</h2>
+        ${technologies.length ? `
+        <p class="projects__modal-tech-label">Tecnologias utilizadas: <strong>${technologies.join(', ')}</strong></p>
+        ` : ''}
         <p class="projects__modal-description">${project.longDescription || project.description}</p>
+        ${technologies.length ? `
         <div class="projects__modal-tech">
           ${technologies.map(tech => 
             `<span class="projects__card-tech-item">${tech}</span>`
           ).join('')}
         </div>
+        ` : ''}
         <div class="projects__modal-links">
           ${project.liveUrl ? (project.inDevelopment
             ? `

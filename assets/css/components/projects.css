@@ -146,7 +146,16 @@
 .projects__card-description {
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.projects__card-tech-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 var(--spacing-sm);
 }
 
 .projects__card-tech {
@@ -279,6 +288,17 @@
 .projects__modal-title {
   font-size: var(--font-size-3xl);
   margin-bottom: var(--spacing-md);
+}
+
+.projects__modal-tech-label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.projects__modal-tech-label strong {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
 }
 
 .projects__modal-description {
