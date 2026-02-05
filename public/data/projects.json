@@ -63,13 +63,12 @@
     "longDescription": "Landing page desenvolvida com HTML5, CSS3 e JavaScript vanilla. Inclui animações suaves, formulário de contato integrado e otimizada para SEO.",
     "category": "web",
     "technologies": ["HTML5", "CSS3", "JavaScript", "GSAP"],
-    "image": "/assets/images/projects/placeholder.jpg",
-    "liveUrl": "https://exemplo-landing.com",
-    "githubUrl": "https://github.com/seuuser/landing-page",
-    "featured": false,
+    "image": "/assets/images/projects/project4.jpg",
+    "liveUrl": "https://landing-page-five-blond-73.vercel.app/",
+    "githubUrl": "https://github.com/VandinDev221/LandingPage.git",
+    "featured": true,
     "likes": 19,
-    "views": 67,
-    "inDevelopment": true
+    "views": 67
   },
   {
     "id": 7,

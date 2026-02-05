@@ -63,9 +63,9 @@
     "category": "web",
     "technologies": ["HTML5", "CSS3", "JavaScript", "GSAP"],
     "image": "/assets/images/projects/project4.jpg",
-    "liveUrl": "https://exemplo-landing.com",
-    "githubUrl": "https://github.com/seuuser/landing-page",
-    "featured": false,
+    "liveUrl": "https://landing-page-five-blond-73.vercel.app/",
+    "githubUrl": "https://github.com/VandinDev221/LandingPage.git",
+    "featured": true,
     "likes": 19,
     "views": 67
   },
