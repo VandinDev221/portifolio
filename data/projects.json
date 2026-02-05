@@ -49,9 +49,9 @@
     "category": "web",
     "technologies": ["HTML", "CSS", "JavaScript", "Chart.js"],
     "image": "/assets/images/projects/project3.jpg",
-    "liveUrl": "https://exemplo-dashboard.com",
-    "githubUrl": "https://github.com/seuuser/dashboard",
-    "featured": false,
+    "liveUrl": "https://habithub-analytics.vercel.app/",
+    "githubUrl": "https://github.com/VandinDev221/Habithub_Analytics.git",
+    "featured": true,
     "likes": 35,
     "views": 124
   },
