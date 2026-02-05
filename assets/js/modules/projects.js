@@ -39,12 +39,26 @@ class Projects {
       this.projects.forEach(project => {
         const stored = localStorage.getItem(`project_${project.id}`);
         if (stored) {
-          const data = JSON.parse(stored);
-          project.likes = data.likes || project.likes;
-          project.views = data.views || project.views;
+          const parsed = JSON.parse(stored);
+          project.likes = parsed.likes ?? project.likes;
+          project.views = parsed.views ?? project.views;
         }
       });
+      // Ao acessar a página: +1 visualização em cada projeto (uma vez por sessão)
+      this.incrementViewsOnPageAccess();
     }
+  }
+
+  /**
+   * Incrementa visualizações de todos os projetos ao acessar a página (1x por sessão)
+   */
+  incrementViewsOnPageAccess() {
+    if (sessionStorage.getItem('portfolio_views_counted') === 'true') return;
+    this.projects.forEach(project => {
+      project.views = (project.views || 0) + 1;
+      this.saveProjectData(project);
+    });
+    sessionStorage.setItem('portfolio_views_counted', 'true');
   }
 
   /**
