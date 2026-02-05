@@ -11,6 +11,7 @@ import Contact from './modules/contact.js';
 import Skills from './modules/skills.js';
 import Experience from './modules/experience.js';
 import Intro from './modules/intro.js';
+import Interactions from './modules/interactions.js';
 import { lazyLoadImages, measurePerformance } from './utils/performance.js';
 
 // Aguarda DOM estar pronto
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navigation = new Navigation();
   const projects = new Projects();
   const animations = new Animations();
+  const interactions = new Interactions();
   const theme = new Theme();
   const contact = new Contact();
   const skills = new Skills();
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navigation,
     projects,
     animations,
+    interactions,
     theme,
     contact,
     skills,
