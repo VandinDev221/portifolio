@@ -195,6 +195,29 @@
   gap: var(--spacing-xs);
 }
 
+.projects__card-like-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.projects__card-like-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.projects__card-like-btn--liked {
+  cursor: default;
+}
+
+.projects__card-like-btn--liked:hover {
+  transform: none;
+}
+
 .projects__card-featured {
   border: 2px solid var(--color-accent);
   box-shadow: var(--shadow-accent);

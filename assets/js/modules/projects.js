@@ -112,8 +112,39 @@ class Projects {
       });
     });
 
+    // Botão de like (❤️)
+    this.projectsContainer.querySelectorAll('.projects__card-like-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const projectId = parseInt(btn.dataset.projectId, 10);
+        this.toggleLike(projectId, btn);
+      });
+    });
+
     // Adiciona animações
     this.animateCards();
+  }
+
+  /**
+   * Verifica se o visitante já curtiu o projeto (localStorage)
+   */
+  hasLiked(projectId) {
+    return localStorage.getItem(`project_${projectId}_liked`) === 'true';
+  }
+
+  /**
+   * Curtir projeto: incrementa like e persiste (1 like por visitante por projeto)
+   */
+  toggleLike(projectId, buttonEl) {
+    if (this.hasLiked(projectId)) return;
+    const project = this.projects.find(p => p.id === projectId);
+    if (!project) return;
+    project.likes = (project.likes || 0) + 1;
+    this.saveProjectData(project);
+    localStorage.setItem(`project_${projectId}_liked`, 'true');
+    const span = buttonEl.querySelector('span');
+    if (span) span.textContent = project.likes;
+    buttonEl.classList.add('projects__card-like-btn--liked');
   }
 
   /**
@@ -168,9 +199,14 @@ class Projects {
           ` : ''}
           <div class="projects__card-footer">
             <div class="projects__card-stats">
-              <span class="projects__card-stat">
-                ❤️ ${project.likes || 0}
-              </span>
+              <button type="button" 
+                      class="projects__card-stat projects__card-like-btn ${this.hasLiked(project.id) ? 'projects__card-like-btn--liked' : ''}" 
+                      data-project-id="${project.id}" 
+                      data-likes-count
+                      onclick="event.stopPropagation()"
+                      aria-label="Curtir projeto">
+                ❤️ <span>${project.likes || 0}</span>
+              </button>
               <span class="projects__card-stat">
                 👁️ ${project.views || 0}
               </span>
