@@ -16,13 +16,10 @@ class Animations {
   }
 
   /**
-   * Configura animações baseadas em scroll
+   * Configura animações baseadas em scroll (elementos com .animate-on-scroll)
    */
   setupScrollAnimations() {
     const elements = document.querySelectorAll('.animate-on-scroll');
-    
-    if (elements.length === 0) return;
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -30,14 +27,25 @@ class Animations {
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    elements.forEach(el => observer.observe(el));
 
-    elements.forEach(element => {
-      observer.observe(element);
-    });
+    /* Seções: ao entrar na tela, animar filhos com atraso (stagger) */
+    const sections = document.querySelectorAll('.section:not(.hero)');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const section = entry.target;
+        section.classList.add('section-visible');
+        const staggerItems = section.querySelectorAll('[data-animate-stagger]');
+        staggerItems.forEach((el, i) => {
+          el.style.animationDelay = `${i * 80}ms`;
+          el.classList.add('animated');
+        });
+        sectionObserver.unobserve(section);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+    sections.forEach(s => sectionObserver.observe(s));
   }
 
   /**
@@ -62,29 +70,17 @@ class Animations {
   }
 
   /**
-   * Configura efeitos de hover
+   * Configura efeitos de hover (reforçados)
    */
   setupHoverEffects() {
-    // Cards com efeito de elevação
-    const cards = document.querySelectorAll('.card, .projects__card, .about__stat-card');
-    
+    const cards = document.querySelectorAll('.card, .projects__card, .about__stat-card, .contact__info-item');
     cards.forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-      });
+      card.style.transition = 'transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease';
     });
 
-    // Links com efeito de underline
-    const links = document.querySelectorAll('a[data-hover-effect]');
-    
-    links.forEach(link => {
-      link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
-      });
-      
-      link.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-      });
+    document.querySelectorAll('a[data-hover-effect]').forEach(link => {
+      link.addEventListener('mouseenter', () => { link.style.transform = 'translateY(-3px)'; });
+      link.addEventListener('mouseleave', () => { link.style.transform = 'translateY(0)'; });
     });
   }
 

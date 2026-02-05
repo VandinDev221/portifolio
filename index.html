@@ -100,6 +100,16 @@
     </nav>
   </header>
 
+  <!-- Objetos flutuantes (após a intro) -->
+  <div class="floating-shapes" aria-hidden="true">
+    <div class="floating-shapes__blob floating-shapes__blob--1 animate-float"></div>
+    <div class="floating-shapes__blob floating-shapes__blob--2 animate-float-slow"></div>
+    <div class="floating-shapes__blob floating-shapes__blob--3 animate-float-reverse"></div>
+    <div class="floating-shapes__blob floating-shapes__blob--4 animate-morph-blob"></div>
+    <div class="floating-shapes__circle floating-shapes__circle--1 animate-float"></div>
+    <div class="floating-shapes__circle floating-shapes__circle--2 animate-float-slow"></div>
+  </div>
+
   <!-- Hero Section -->
   <section id="home" class="hero section" role="main">
     <div class="hero__container">
@@ -124,10 +134,10 @@
   <!-- About Section -->
   <section id="about" class="about section" aria-labelledby="about-title">
     <div class="about__container">
-      <h2 id="about-title" class="section-title">Sobre Mim</h2>
+      <h2 id="about-title" class="section-title animate-on-scroll">Sobre Mim</h2>
       
       <div class="about__content">
-        <div class="about__image-wrapper">
+        <div class="about__image-wrapper" data-animate-stagger>
           <img src="./assets/images/profile.jpg" 
                alt="Foto de perfil" 
                class="about__image"
@@ -135,7 +145,7 @@
           <div class="about__image-overlay"></div>
         </div>
         
-        <div class="about__text">
+        <div class="about__text" data-animate-stagger>
           <p>
             Sou um desenvolvedor apaixonado por tecnologia, com foco em criar soluções web modernas 
             e eficientes. Tenho experiência em desenvolvimento frontend e backend, sempre buscando 
@@ -157,15 +167,15 @@
       </div>
       
       <div class="about__stats">
-        <div class="about__stat-card">
+        <div class="about__stat-card" data-animate-stagger>
           <span class="about__stat-number">10</span>
           <span class="about__stat-label">Projetos</span>
         </div>
-        <div class="about__stat-card">
+        <div class="about__stat-card" data-animate-stagger>
           <span class="about__stat-number">5</span>
           <span class="about__stat-label">Clientes</span>
         </div>
-        <div class="about__stat-card">
+        <div class="about__stat-card" data-animate-stagger>
           <span class="about__stat-number">2</span>
           <span class="about__stat-label">Anos de Experiência</span>
         </div>
@@ -176,9 +186,9 @@
   <!-- Projects Section -->
   <section id="projects" class="projects section" aria-labelledby="projects-title">
     <div class="projects__container">
-      <h2 id="projects-title" class="section-title">Projetos</h2>
+      <h2 id="projects-title" class="section-title animate-on-scroll">Projetos</h2>
       
-      <div class="projects__filters" role="tablist">
+      <div class="projects__filters" role="tablist" data-animate-stagger>
         <button class="projects__filter-btn active" data-filter="all" role="tab" aria-selected="true">
           Todos
         </button>
@@ -220,10 +230,10 @@
   <!-- Skills Section -->
   <section id="skills" class="skills section" aria-labelledby="skills-title">
     <div class="skills__container">
-      <h2 id="skills-title" class="section-title">Habilidades</h2>
+      <h2 id="skills-title" class="section-title animate-on-scroll">Habilidades</h2>
       
       <div class="skills__grid">
-        <div class="skills__category">
+        <div class="skills__category" data-animate-stagger>
           <h3 class="skills__category-title">
             <span class="skills__category-icon">💻</span>
             Frontend
@@ -272,7 +282,7 @@
           </div>
         </div>
         
-        <div class="skills__category">
+        <div class="skills__category" data-animate-stagger>
           <h3 class="skills__category-title">
             <span class="skills__category-icon">⚙️</span>
             Backend
@@ -311,7 +321,7 @@
           </div>
         </div>
         
-        <div class="skills__category">
+        <div class="skills__category" data-animate-stagger>
           <h3 class="skills__category-title">
             <span class="skills__category-icon">🛠️</span>
             Ferramentas
@@ -356,9 +366,9 @@
   <!-- Experience Section -->
   <section id="experience" class="experience section" aria-labelledby="experience-title">
     <div class="experience__container">
-      <h2 id="experience-title" class="section-title">Experiência</h2>
+      <h2 id="experience-title" class="section-title animate-on-scroll">Experiência</h2>
       
-      <div class="experience__timeline" role="list">
+      <div class="experience__timeline" role="list" data-animate-stagger>
         <!-- Experiências serão inseridas dinamicamente via JavaScript -->
       </div>
     </div>
@@ -367,9 +377,9 @@
   <!-- Contact Section -->
   <section id="contact" class="contact section" aria-labelledby="contact-title">
     <div class="contact__container">
-      <h2 id="contact-title" class="section-title">Contato</h2>
+      <h2 id="contact-title" class="section-title animate-on-scroll">Contato</h2>
       
-      <div class="contact__content">
+      <div class="contact__content" data-animate-stagger>
         <div class="contact__info">
           <div class="contact__info-item">
             <div class="contact__info-icon">📧</div>

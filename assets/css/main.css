@@ -36,3 +36,87 @@ html {
 .loading.loaded {
   opacity: 1;
 }
+
+/* Objetos flutuantes (movimento contínuo) */
+.floating-shapes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-shapes__blob,
+.floating-shapes__circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+}
+
+[data-theme="light"] .floating-shapes__blob,
+[data-theme="light"] .floating-shapes__circle {
+  opacity: 0.08;
+}
+
+.floating-shapes__blob {
+  background: var(--color-accent);
+}
+
+.floating-shapes__blob--1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  animation-duration: 7s;
+  animation-delay: 0s;
+}
+
+.floating-shapes__blob--2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 10%;
+  animation-duration: 9s;
+  animation-delay: 1s;
+}
+
+.floating-shapes__blob--3 {
+  width: 250px;
+  height: 250px;
+  bottom: 15%;
+  left: 15%;
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+
+.floating-shapes__blob--4 {
+  width: 180px;
+  height: 180px;
+  top: 40%;
+  right: 25%;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.floating-shapes__circle {
+  width: 80px;
+  height: 80px;
+  background: var(--color-accent);
+  top: 25%;
+  right: 15%;
+  animation-duration: 5s;
+}
+
+.floating-shapes__circle--2 {
+  width: 50px;
+  height: 50px;
+  bottom: 30%;
+  left: 8%;
+  animation-duration: 6s;
+  animation-delay: 0.5s;
+}
+
+.section,
+.hero {
+  position: relative;
+  z-index: 1;
+}
