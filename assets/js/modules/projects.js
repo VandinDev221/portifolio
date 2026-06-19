@@ -269,6 +269,7 @@ class Projects {
     const projectKey = project.slug || project.id;
     const hasGradient = project.imageGradient && (
       project.imageSource === 'gradient'
+      || !project.image
       || project.image?.includes('placeholder')
     );
     const gradientStyle = hasGradient ? `style="--card-gradient: ${project.imageGradient}"` : '';
@@ -425,6 +426,7 @@ class Projects {
     const technologies = project.technologies || [];
     const hasGradient = project.imageGradient && (
       project.imageSource === 'gradient'
+      || !project.image
       || project.image?.includes('placeholder')
     );
 

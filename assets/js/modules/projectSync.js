@@ -5,7 +5,6 @@
 import { fetchJSON } from '../utils/helpers.js';
 
 const VERCEL_PATTERN = /vercel\.app|vercel\.com/i;
-const IMAGE_CACHE = new Map();
 const PREVIEW_CACHE_KEY = 'portfolio_vercel_previews_v1';
 const PREVIEW_CACHE_TTL = 1000 * 60 * 60 * 12; // 12 horas
 
@@ -72,19 +71,6 @@ function gradientForRepo(repoName) {
     hash = repoName.charCodeAt(i) + ((hash << 5) - hash);
   }
   return GRADIENTS[Math.abs(hash) % GRADIENTS.length];
-}
-
-async function imageExists(url) {
-  if (IMAGE_CACHE.has(url)) return IMAGE_CACHE.get(url);
-  try {
-    const response = await fetch(url, { method: 'HEAD' });
-    const exists = response.ok;
-    IMAGE_CACHE.set(url, exists);
-    return exists;
-  } catch {
-    IMAGE_CACHE.set(url, false);
-    return false;
-  }
 }
 
 function normalizeUrl(url) {
@@ -177,22 +163,6 @@ async function resolveProjectImage(repoName, overrideImage, liveUrl) {
     };
   }
 
-  const candidates = [
-    `./assets/images/projects/${repoName}.png`,
-    `./assets/images/projects/${repoName}.jpg`,
-    `./assets/images/projects/${repoName}.webp`
-  ];
-
-  for (const candidate of candidates) {
-    if (await imageExists(candidate)) {
-      return {
-        image: candidate,
-        imageGradient: null,
-        imageSource: 'local'
-      };
-    }
-  }
-
   if (liveUrl && isVercelDeploy(liveUrl)) {
     const previewImage = await fetchVercelPreviewImage(liveUrl);
     return {
@@ -203,7 +173,7 @@ async function resolveProjectImage(repoName, overrideImage, liveUrl) {
   }
 
   return {
-    image: './assets/images/projects/placeholder.jpg',
+    image: null,
     imageGradient: gradientForRepo(repoName),
     imageSource: 'gradient'
   };
