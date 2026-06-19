@@ -16,6 +16,23 @@
   flex-wrap: wrap;
 }
 
+.projects__live-badge {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+  margin: calc(var(--spacing-md) * -1) 0 var(--spacing-xl);
+  opacity: 0.85;
+}
+
+.projects__live-badge::before {
+  content: '●';
+  display: inline-block;
+  margin-right: var(--spacing-sm);
+  animation: pulse 2s infinite;
+}
+
 .projects__filter-btn {
   padding: var(--spacing-sm) var(--spacing-lg);
   background: transparent;

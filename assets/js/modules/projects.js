@@ -3,7 +3,19 @@
  * Gerencia filtragem, modal e carrossel de projetos
  */
 
-import { syncProjectsFromVercel, updateProjectStats } from './projectSync.js';
+import {
+  syncProjectsFromVercel,
+  updateProjectStats,
+  startProjectsAutoSync
+} from './projectSync.js';
+import {
+  fetchAllStats,
+  applyStatsToProjects,
+  recordView,
+  recordLike,
+  hasLikedLocally,
+  startStatsPolling
+} from './projectStats.js';
 
 class Projects {
   constructor() {
@@ -16,6 +28,8 @@ class Projects {
     this.devOverlayClose = document.getElementById('projects-dev-overlay-close');
     this.projects = [];
     this.activeFilter = 'all';
+    this.projectsSyncTimer = null;
+    this.statsPollTimer = null;
 
     this.init();
   }
@@ -27,6 +41,7 @@ class Projects {
     this.setupModal();
     this.setupDevOverlay();
     this.renderProjects();
+    this.setupLiveUpdates();
   }
 
   showLoading() {
@@ -43,35 +58,78 @@ class Projects {
    */
   async loadProjects() {
     const { projects } = await syncProjectsFromVercel();
-    this.projects = projects;
-
-    this.projects.forEach(project => {
-      const stored = localStorage.getItem(this.storageKey(project));
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        project.likes = parsed.likes ?? project.likes;
-        project.views = parsed.views ?? project.views;
-      }
-    });
-
-    this.incrementViewsOnPageAccess();
+    const remoteStats = await fetchAllStats();
+    this.projects = applyStatsToProjects(projects, remoteStats);
+    await this.incrementViewsOnPageAccess();
     updateProjectStats(this.projects.length);
   }
 
-  storageKey(project) {
-    return `project_${project.slug || project.id}`;
+  setupLiveUpdates() {
+    this.projectsSyncTimer = startProjectsAutoSync((freshProjects) => {
+      const previousCount = this.projects.length;
+      this.projects = applyStatsToProjects(freshProjects, null);
+      updateProjectStats(this.projects.length);
+
+      if (freshProjects.length !== previousCount) {
+        this.renderProjects();
+      }
+    });
+
+    this.statsPollTimer = startStatsPolling((remoteStats) => {
+      this.projects = applyStatsToProjects(this.projects, remoteStats);
+      this.refreshStatsInCards();
+    });
+
+    this.showLiveBadge();
+  }
+
+  showLiveBadge() {
+    const container = document.querySelector('.projects__container');
+    if (!container || document.getElementById('projects-live-badge')) return;
+
+    const badge = document.createElement('p');
+    badge.id = 'projects-live-badge';
+    badge.className = 'projects__live-badge';
+    badge.setAttribute('aria-live', 'polite');
+    badge.textContent = 'Projetos e estatísticas atualizados em tempo real';
+    container.insertBefore(badge, container.querySelector('.projects__filters'));
+  }
+
+  refreshStatsInCards() {
+    if (!this.projectsContainer) return;
+
+    this.projects.forEach(project => {
+      const slug = project.slug || String(project.id);
+      const card = this.projectsContainer.querySelector(`[data-project-slug="${slug}"]`);
+      if (!card) return;
+
+      const likeSpan = card.querySelector('.projects__card-like-btn span');
+      const viewsStat = card.querySelector('[data-views-count]');
+
+      if (likeSpan) likeSpan.textContent = project.likes || 0;
+      if (viewsStat) viewsStat.textContent = `👁️ ${project.views || 0}`;
+    });
   }
 
   /**
-   * Incrementa visualizações de todos os projetos ao acessar a página (1x por sessão)
+   * Registra visualizações na API (1x por sessão por projeto)
    */
-  incrementViewsOnPageAccess() {
-    if (sessionStorage.getItem('portfolio_views_counted') === 'true') return;
-    this.projects.forEach(project => {
-      project.views = (project.views || 0) + 1;
-      this.saveProjectData(project);
-    });
-    sessionStorage.setItem('portfolio_views_counted', 'true');
+  async incrementViewsOnPageAccess() {
+    const sessionKey = 'portfolio_views_counted_v2';
+    if (sessionStorage.getItem(sessionKey) === 'true') return;
+
+    await Promise.all(
+      this.projects.map(async project => {
+        const slug = project.slug || String(project.id);
+        const result = await recordView(slug);
+        if (result) {
+          project.views = result.views;
+          project.likes = result.likes ?? project.likes;
+        }
+      })
+    );
+
+    sessionStorage.setItem(sessionKey, 'true');
   }
 
   /**
@@ -167,19 +225,26 @@ class Projects {
   }
 
   hasLiked(projectSlug) {
-    return localStorage.getItem(`project_${projectSlug}_liked`) === 'true';
+    return hasLikedLocally(projectSlug);
   }
 
-  toggleLike(projectSlug, buttonEl) {
+  async toggleLike(projectSlug, buttonEl) {
     if (this.hasLiked(projectSlug)) return;
+
     const project = this.projects.find(p => (p.slug || String(p.id)) === projectSlug);
     if (!project) return;
-    project.likes = (project.likes || 0) + 1;
-    this.saveProjectData(project);
-    localStorage.setItem(`project_${projectSlug}_liked`, 'true');
+
+    const result = await recordLike(projectSlug);
+    if (!result) return;
+
+    project.likes = result.likes ?? project.likes;
+    project.views = result.views ?? project.views;
+
     const span = buttonEl.querySelector('span');
     if (span) span.textContent = project.likes;
-    buttonEl.classList.add('projects__card-like-btn--liked');
+    if (result.success !== false) {
+      buttonEl.classList.add('projects__card-like-btn--liked');
+    }
   }
 
   createProjectCard(project) {
@@ -249,7 +314,7 @@ class Projects {
                       aria-label="Curtir projeto">
                 ❤️ <span>${project.likes || 0}</span>
               </button>
-              <span class="projects__card-stat">
+              <span class="projects__card-stat" data-views-count>
                 👁️ ${project.views || 0}
               </span>
             </div>
@@ -326,11 +391,16 @@ class Projects {
     this.devOverlay.setAttribute('aria-hidden', 'true');
   }
 
-  openModal(project) {
+  async openModal(project) {
     if (!this.modal) return;
 
-    project.views = (project.views || 0) + 1;
-    this.saveProjectData(project);
+    const slug = project.slug || String(project.id);
+    const result = await recordView(slug);
+    if (result) {
+      project.views = result.views;
+      project.likes = result.likes ?? project.likes;
+      this.refreshStatsInCards();
+    }
 
     const imageUrl = project.image || '/assets/images/projects/placeholder.jpg';
     const technologies = project.technologies || [];
@@ -411,13 +481,6 @@ class Projects {
     
     this.modal.classList.remove('active');
     document.body.style.overflow = '';
-  }
-
-  saveProjectData(project) {
-    localStorage.setItem(this.storageKey(project), JSON.stringify({
-      likes: project.likes,
-      views: project.views
-    }));
   }
 }
 

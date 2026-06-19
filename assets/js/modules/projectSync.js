@@ -337,7 +337,6 @@ async function buildFallbackProjects(config, overrideMap) {
  * Atualiza contador de projetos na seção Sobre
  */
 export function updateProjectStats(count) {
-  const stat = document.querySelector('.about__stat-card .about__stat-number');
   const cards = document.querySelectorAll('.about__stat-card');
 
   cards.forEach(card => {
@@ -347,4 +346,34 @@ export function updateProjectStats(count) {
       number.textContent = String(count);
     }
   });
+}
+
+const PROJECTS_SYNC_INTERVAL = 2 * 60 * 1000;
+
+/**
+ * Sincroniza projetos periodicamente e ao voltar para a aba
+ */
+export function startProjectsAutoSync(onUpdate, intervalMs = PROJECTS_SYNC_INTERVAL) {
+  let syncing = false;
+
+  const runSync = async () => {
+    if (syncing || document.hidden) return;
+    syncing = true;
+
+    try {
+      const result = await syncProjectsFromVercel();
+      onUpdate(result.projects);
+    } catch (error) {
+      console.warn('Falha na sincronização automática de projetos.', error);
+    } finally {
+      syncing = false;
+    }
+  };
+
+  const intervalId = setInterval(runSync, intervalMs);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) runSync();
+  });
+
+  return intervalId;
 }
