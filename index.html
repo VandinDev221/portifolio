@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Vanderson Carlos Andrade Lindoso — Desenvolvedor Web Full Stack. Projetos em React, TypeScript, PHP, Laravel e mais.">
+  <meta name="keywords" content="desenvolvedor, full stack, portfólio, web developer, React, TypeScript, PHP, Laravel, Vercel">
+  <meta name="author" content="Vanderson Carlos Andrade Lindoso">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portifolio-eight-kohl-75.vercel.app/">
+  <meta property="og:title" content="Vanderson Lindoso | Desenvolvedor Web Full Stack">
+  <meta property="og:description" content="Portfólio com projetos reais publicados no GitHub e Vercel">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://portifolio-eight-kohl-75.vercel.app/">
+  <meta property="twitter:title" content="Vanderson Lindoso | Desenvolvedor Web Full Stack">
+  <meta property="twitter:description" content="Portfólio com projetos reais publicados no GitHub e Vercel">
+  <meta property="twitter:image" content="/assets/images/og-image.jpg">
+  
+  <title>Vanderson Carlos Andrade Lindoso | Desenvolvedor Web Full Stack</title>
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Vanderson Carlos Andrade Lindoso",
+    "jobTitle": "Desenvolvedor Web Full Stack",
+    "url": "https://portifolio-eight-kohl-75.vercel.app",
+    "sameAs": [
+      "https://github.com/VandinDev221",
+      "https://www.instagram.com/vandersonandrad__"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Intro / Apresentação -->
+  <div class="intro-overlay" id="intro-overlay" role="presentation" aria-live="polite">
+    <div class="intro-overlay__bg"></div>
+    <button type="button" class="intro-overlay__skip" id="intro-skip" aria-label="Pular introdução">
+      Pular 
+    </button>
+    <div class="intro-overlay__content">
+      <p class="intro-overlay__phrase intro-overlay__phrase--active" id="intro-phrase" data-index="0">
+        Já pensou em ter um site?
+      </p>
+      <p class="intro-overlay__cta" id="intro-cta" aria-hidden="true">
+        Venha conhecer meu trabalho!
+      </p>
+      <a href="#home" class="intro-overlay__btn" id="intro-btn" aria-hidden="true">Entrar</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <a href="#home" class="header__logo" aria-label="Logo">Vanderson<span style="color: var(--color-text)">Dev</span></a>
+      
+      <nav class="header__nav" role="navigation" aria-label="Navegação principal">
+        <ul class="header__nav-list">
+          <li><a href="#home" class="header__nav-link">Início</a></li>
+          <li><a href="#about" class="header__nav-link">Sobre</a></li>
+          <li><a href="#projects" class="header__nav-link">Projetos</a></li>
+          <li><a href="#skills" class="header__nav-link">Habilidades</a></li>
+          <li><a href="#experience" class="header__nav-link">Experiência</a></li>
+          <li><a href="#contact" class="header__nav-link">Contato</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header__actions">
+        <button class="header__theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+          <span>🌙</span>
+        </button>
+        <button class="header__menu-toggle" aria-label="Menu mobile" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <nav class="header__mobile-menu" role="navigation" aria-label="Menu mobile">
+      <ul class="header__mobile-nav-list">
+        <li><a href="#home" class="header__mobile-nav-link">Início</a></li>
+        <li><a href="#about" class="header__mobile-nav-link">Sobre</a></li>
+        <li><a href="#projects" class="header__mobile-nav-link">Projetos</a></li>
+        <li><a href="#skills" class="header__mobile-nav-link">Habilidades</a></li>
+        <li><a href="#experience" class="header__mobile-nav-link">Experiência</a></li>
+        <li><a href="#contact" class="header__mobile-nav-link">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Barra de progresso do scroll -->
+  <div class="scroll-progress" id="scroll-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso da leitura"></div>
+
+  <!-- Objetos flutuantes (após a intro) -->
+  <div class="floating-shapes" aria-hidden="true">
+    <div class="floating-shapes__blob floating-shapes__blob--1 animate-float"></div>
+    <div class="floating-shapes__blob floating-shapes__blob--2 animate-float-slow"></div>
+    <div class="floating-shapes__blob floating-shapes__blob--3 animate-float-reverse"></div>
+    <div class="floating-shapes__blob floating-shapes__blob--4 animate-morph-blob"></div>
+    <div class="floating-shapes__circle floating-shapes__circle--1 animate-float"></div>
+    <div class="floating-shapes__circle floating-shapes__circle--2 animate-float-slow"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero section" role="main">
+    <div class="hero__container">
+      <p class="hero__greeting">Olá, meu nome é</p>
+      <h1 class="hero__name">Vanderson Carlos Andrade Lindoso</h1>
+      <h2 class="hero__title">Desenvolvedor Web Full Stack</h2>
+      <p class="hero__tagline">
+        Desenvolvedor full stack especializado em React, TypeScript, PHP e Laravel.
+        Crio aplicações web modernas, responsivas e publicadas na Vercel.
+      </p>
+      <span class="hero__typed" id="typed-text"></span>
+      <div class="hero__tech" aria-label="Principais tecnologias">
+        <span class="hero__tech-tag">TypeScript</span>
+        <span class="hero__tech-tag">React</span>
+        <span class="hero__tech-tag">JavaScript</span>
+        <span class="hero__tech-tag">PHP</span>
+        <span class="hero__tech-tag">Laravel</span>
+        <span class="hero__tech-tag">Node.js</span>
+        <span class="hero__tech-tag">MySQL</span>
+        <span class="hero__tech-tag">Tailwind CSS</span>
+      </div>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+        <a href="#contact" class="btn">Entrar em Contato</a>
+      </div>
+    </div>
+   <!-- <a href="#about" class="hero__scroll-indicator" aria-label="Rolar para baixo">
+      <span>Scroll</span>
+    </a> -->
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about section" aria-labelledby="about-title">
+    <div class="about__container">
+      <h2 id="about-title" class="section-title animate-on-scroll" data-number="01.">Sobre Mim</h2>
+      
+      <div class="about__content">
+        <div class="about__image-wrapper" data-animate-stagger>
+          <img src="./assets/images/profile.png" 
+               alt="Foto de perfil" 
+               class="about__image"
+               loading="lazy">
+          <div class="about__image-overlay"></div>
+        </div>
+        
+        <div class="about__text" data-animate-stagger>
+          <p>
+            Sou desenvolvedor web full stack de São Luís, MA, com formação técnica em 
+            Desenvolvimento de Sistemas pelo IFMA e cursando Tecnologia em Desenvolvimento Web 
+            na Unopar. Combino experiência em infraestrutura de TI com paixão por criar 
+            aplicações web de ponta a ponta.
+          </p>
+          <p>
+            Meus projetos estão todos publicados no 
+            <span class="about__highlight">GitHub</span> e em produção na 
+            <span class="about__highlight">Vercel</span> — desde PWAs de bem-estar até 
+            dashboards analíticos, sistemas de gestão escolar e landing pages modernas.
+          </p>
+          <p>
+            Trabalho com <span class="about__highlight">React</span>, 
+            <span class="about__highlight">TypeScript</span>, 
+            <span class="about__highlight">JavaScript</span>, 
+            <span class="about__highlight">PHP</span>, 
+            <span class="about__highlight">Laravel</span>, 
+            <span class="about__highlight">MySQL</span> e 
+            <span class="about__highlight">Tailwind CSS</span>, sempre buscando 
+            entregar código limpo, performático e com excelente UX.
+          </p>
+        </div>
+      </div>
+      
+      <div class="about__stats">
+        <div class="about__stat-card" data-animate-stagger>
+          <span class="about__stat-number">6</span>
+          <span class="about__stat-label">Projetos Publicados</span>
+        </div>
+        <div class="about__stat-card" data-animate-stagger>
+          <span class="about__stat-number">7</span>
+          <span class="about__stat-label">Repositórios GitHub</span>
+        </div>
+        <div class="about__stat-card" data-animate-stagger>
+          <span class="about__stat-number">2+</span>
+          <span class="about__stat-label">Anos de Experiência</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects section" aria-labelledby="projects-title">
+    <div class="projects__container">
+      <h2 id="projects-title" class="section-title animate-on-scroll" data-number="02.">Projetos</h2>
+      
+      <div class="projects__filters" role="tablist" data-animate-stagger>
+        <button class="projects__filter-btn active" data-filter="all" role="tab" aria-selected="true">
+          Todos
+        </button>
+        <button class="projects__filter-btn" data-filter="web" role="tab" aria-selected="false">
+          Web
+        </button>
+        <button class="projects__filter-btn" data-filter="dashboard" role="tab" aria-selected="false">
+          Dashboard
+        </button>
+        <button class="projects__filter-btn" data-filter="landing" role="tab" aria-selected="false">
+          Landing Pages
+        </button>
+      </div>
+      
+      <div class="projects__grid" role="list">
+        <!-- Projetos serão inseridos dinamicamente via JavaScript -->
+      </div>
+    </div>
+    
+    <!-- Modal de Projeto -->
+    <div class="projects__modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="projects__modal-backdrop"></div>
+      <div class="projects__modal-content">
+        <!-- Conteúdo será inserido dinamicamente -->
+      </div>
+    </div>
+
+    <!-- Overlay "Projeto em desenvolvimento" -->
+    <div class="projects__dev-overlay" id="projects-dev-overlay" role="alert" aria-live="polite" aria-hidden="true">
+      <div class="projects__dev-overlay-content">
+        <div class="projects__dev-overlay-icon" aria-hidden="true">🚧</div>
+        <p class="projects__dev-overlay-title">Calma!</p>
+        <p class="projects__dev-overlay-text">Projeto em desenvolvimento, volte em breve.</p>
+        <button type="button" class="projects__dev-overlay-btn" id="projects-dev-overlay-close">Entendi</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills section" aria-labelledby="skills-title">
+    <div class="skills__container">
+      <h2 id="skills-title" class="section-title animate-on-scroll" data-number="03.">Habilidades</h2>
+      
+      <div class="skills__grid">
+        <div class="skills__category" data-animate-stagger>
+          <h3 class="skills__category-title">
+            <span class="skills__category-icon">💻</span>
+            Frontend
+          </h3>
+          <div class="skills__list">
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">TypeScript</span>
+                <span class="skills__item-percentage">88%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="88" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">TypeScript, tipagem estática, interfaces e generics</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">HTML & CSS</span>
+                <span class="skills__item-percentage">95%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="95" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">HTML5 semântico, CSS3, Grid e Flexbox</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">JavaScript</span>
+                <span class="skills__item-percentage">92%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="92" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">JavaScript ES6+, DOM, fetch e APIs</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">React</span>
+                <span class="skills__item-percentage">88%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="88" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">React, hooks, componentes e estado</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Tailwind CSS</span>
+                <span class="skills__item-percentage">88%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="88" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Tailwind CSS, utility-first e design responsivo</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Bootstrap</span>
+                <span class="skills__item-percentage">85%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="85" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Bootstrap, componentes e layouts responsivos</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Chart.js</span>
+                <span class="skills__item-percentage">80%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="80" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Gráficos interativos e dashboards visuais</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills__category" data-animate-stagger>
+          <h3 class="skills__category-title">
+            <span class="skills__category-icon">⚙️</span>
+            Backend
+          </h3>
+          <div class="skills__list">
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">PHP & Laravel</span>
+                <span class="skills__item-percentage">85%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="85" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">PHP, Laravel, MVC e autenticação</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Node.js</span>
+                <span class="skills__item-percentage">80%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="80" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Node.js, npm e scripts server-side</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">TypeScript (Backend)</span>
+                <span class="skills__item-percentage">85%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="85" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">APIs tipadas com TypeScript e Node.js</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Express.js</span>
+                <span class="skills__item-percentage">78%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="78" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Express, rotas, middlewares e APIs</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">APIs REST</span>
+                <span class="skills__item-percentage">85%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="85" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Criação e consumo de APIs RESTful</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">MySQL</span>
+                <span class="skills__item-percentage">82%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="82" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">MySQL, modelagem, joins e consultas</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Banco de Dados</span>
+                <span class="skills__item-percentage">80%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="80" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Modelagem relacional, CRUD e integração</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills__category" data-animate-stagger>
+          <h3 class="skills__category-title">
+            <span class="skills__category-icon">🛠️</span>
+            Ferramentas & Deploy
+          </h3>
+          <div class="skills__list">
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Git & GitHub</span>
+                <span class="skills__item-percentage">90%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="90" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Git, GitHub, branches e versionamento</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Vite</span>
+                <span class="skills__item-percentage">85%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="85" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Vite, bundling e otimização de build</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Vercel</span>
+                <span class="skills__item-percentage">88%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="88" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Deploy contínuo, domínios e preview</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">PWA</span>
+                <span class="skills__item-percentage">82%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="82" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Service workers, manifest e offline-first</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">SEO</span>
+                <span class="skills__item-percentage">78%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="78" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Meta tags, sitemap e otimização orgânica</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Cursor</span>
+                <span class="skills__item-percentage">92%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="92" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Cursor, IA assistida e produtividade no código</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills__category" data-animate-stagger>
+          <h3 class="skills__category-title">
+            <span class="skills__category-icon">🌐</span>
+            Infraestrutura & Qualidade
+          </h3>
+          <div class="skills__list">
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">UX / UI Design</span>
+                <span class="skills__item-percentage">80%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="80" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Layout, usabilidade e experiência do usuário</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Design Responsivo</span>
+                <span class="skills__item-percentage">90%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="90" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Mobile-first, breakpoints e adaptação</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Acessibilidade</span>
+                <span class="skills__item-percentage">75%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="75" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">ARIA, semântica e navegação inclusiva</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Redes de Computadores</span>
+                <span class="skills__item-percentage">78%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="78" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Configuração, manutenção e suporte de redes</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Data Center</span>
+                <span class="skills__item-percentage">75%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="75" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Operações, monitoramento e infraestrutura</span>
+            </div>
+            <div class="skills__item">
+              <div class="skills__item-header">
+                <span class="skills__item-name">Análise de Dados</span>
+                <span class="skills__item-percentage">72%</span>
+              </div>
+              <div class="skills__item-bar">
+                <div class="skills__item-progress" data-percentage="72" style="width: 0%"></div>
+              </div>
+              <span class="skills__item-tooltip">Interpretação de métricas e indicadores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience section" aria-labelledby="experience-title">
+    <div class="experience__container">
+      <h2 id="experience-title" class="section-title animate-on-scroll" data-number="04.">Experiência</h2>
+      
+      <div class="experience__timeline" role="list" data-animate-stagger>
+        <!-- Experiências serão inseridas dinamicamente via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section" aria-labelledby="contact-title">
+    <div class="contact__container">
+      <h2 id="contact-title" class="section-title animate-on-scroll" data-number="05.">Contato</h2>
+      
+      <div class="contact__content" data-animate-stagger>
+        <div class="contact__info">
+          <div class="contact__info-item">
+            <div class="contact__info-icon">📧</div>
+            <div class="contact__info-content">
+              <h3>Email</h3>
+              <p><a href="mailto:lindosovanderson@gmail.com">lindosovanderson@gmail.com</a></p>
+            </div>
+          </div>
+          
+          <div class="contact__info-item">
+            <div class="contact__info-icon">
+              <img src="./assets/images/icons/whatsapp.png" alt="" width="28" height="28" class="contact__info-icon-img">
+            </div>
+            <div class="contact__info-content">
+              <h3>WhatsApp</h3>
+              <p><a href="https://wa.me/5598985894988" target="_blank" rel="noopener noreferrer">+55 (98) 98589-4988</a></p>
+            </div>
+          </div>
+          
+          <div class="contact__info-item">
+            <div class="contact__info-icon">📍</div>
+            <div class="contact__info-content">
+              <h3>Localização</h3>
+              <p>São Luís, Maranhão, Brasil</p>
+            </div>
+          </div>
+          
+          <div class="contact__info-item">
+            <div class="contact__info-icon">💼</div>
+            <div class="contact__info-content">
+              <h3>Disponibilidade</h3>
+              <p>Aberto para novos projetos</p>
+            </div>
+          </div>
+          
+          <div class="contact__social">
+            <a href="https://github.com/VandinDev221" 
+               class="contact__social-link" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="GitHub">
+              📂
+            </a>
+            <a href="https://www.instagram.com/vandersonandrad__" 
+               class="contact__social-link" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Instagram">
+              📷
+            </a>
+            <a href="https://wa.me/5598985894988" 
+               class="contact__social-link contact__social-link--whatsapp" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="WhatsApp">
+              <img src="./assets/images/icons/whatsapp.png" alt="" width="24" height="24" class="contact__social-icon">
+            </a>
+          </div>
+        </div>
+        
+        <!-- Troque seu_id_formspree pelo ID do seu formulário em https://formspree.io -->
+        <form class="contact__form" 
+              data-formspree-id="mpqlgrvn"
+              aria-label="Formulário de contato">
+          <div class="contact__form-group">
+            <label for="name" class="contact__form-label">
+              Nome <span class="required">*</span>
+            </label>
+            <input type="text" 
+                   id="name" 
+                   name="name" 
+                   class="contact__form-input" 
+                   required 
+                   aria-required="true"
+                   aria-describedby="name-error">
+            <span class="contact__form-error" id="name-error" role="alert"></span>
+          </div>
+          
+          <div class="contact__form-group">
+            <label for="email" class="contact__form-label">
+              Email <span class="required">*</span>
+            </label>
+            <input type="email" 
+                   id="email" 
+                   name="email" 
+                   class="contact__form-input" 
+                   required 
+                   aria-required="true"
+                   aria-describedby="email-error">
+            <span class="contact__form-error" id="email-error" role="alert"></span>
+          </div>
+          
+          <div class="contact__form-group">
+            <label for="subject" class="contact__form-label">
+              Assunto
+            </label>
+            <input type="text" 
+                   id="subject" 
+                   name="subject" 
+                   class="contact__form-input"
+                   aria-describedby="subject-error">
+            <span class="contact__form-error" id="subject-error" role="alert"></span>
+          </div>
+          
+          <div class="contact__form-group">
+            <label for="message" class="contact__form-label">
+              Mensagem <span class="required">*</span>
+            </label>
+            <textarea id="message" 
+                      name="message" 
+                      class="contact__form-textarea" 
+                      rows="5" 
+                      required 
+                      aria-required="true"
+                      aria-describedby="message-error"></textarea>
+            <span class="contact__form-error" id="message-error" role="alert"></span>
+          </div>
+          
+          <button type="submit" class="contact__form-submit">
+            Enviar Mensagem
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__content">
+        <div class="footer__social">
+          <a href="https://github.com/VandinDev221" 
+             class="footer__social-link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="GitHub">
+            📂
+          </a>
+          <a href="https://www.instagram.com/vandersonandrad__" 
+             class="footer__social-link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="Instagram">
+            📷
+          </a>
+          <a href="https://wa.me/5598985894988" 
+             class="footer__social-link footer__social-link--whatsapp" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="WhatsApp">
+            <img src="./assets/images/icons/whatsapp.png" alt="" width="22" height="22" class="footer__social-icon">
+          </a>
+        </div>
+        <p class="footer__text">
+          © <span id="current-year">2025</span> Vanderson Carlos Andrade Lindoso. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Voltar ao topo">
+    ↑
+  </button>
+
+  <!-- Scripts -->
+  <script type="module" src="./assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/lib/typed.min.js"></script>
+  
+  <!-- Typed.js para efeito de digitação -->
+  <script>
+    // Atualiza ano no footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Configura Typed.js quando disponível
+    document.addEventListener('DOMContentLoaded', () => {
+      const typedElement = document.getElementById('typed-text');
+      if (typedElement && typeof Typed !== 'undefined') {
+        new Typed('#typed-text', {
+          strings: [
+            'Desenvolvedor Full Stack',
+            'Especialista em TypeScript',
+            'React & TypeScript',
+            'PHP & Laravel',
+            'Deploy na Vercel',
+            'Sempre Aprendendo'
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 2000,
+          loop: true,
+          showCursor: true,
+          cursorChar: '|'
+        });
+      } else if (typedElement) {
+        // Fallback simples se Typed.js não estiver disponível
+        const strings = [
+          'Desenvolvedor Full Stack',
+          'Criador de Experiências Digitais',
+          'Apaixonado por Tecnologia'
+        ];
+        let currentIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+          const current = strings[currentIndex];
+          if (isDeleting) {
+            typedElement.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+              isDeleting = false;
+              currentIndex = (currentIndex + 1) % strings.length;
+            }
+          } else {
+            typedElement.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === current.length) {
+              isDeleting = true;
+              setTimeout(type, 2000);
+              return;
+            }
+          }
+          setTimeout(type, isDeleting ? 30 : 50);
+        }
+        type();
+      }
+    });
+  </script>
+</body>
+</html>

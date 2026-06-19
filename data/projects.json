@@ -1,0 +1,67 @@
+{
+  "githubUsername": "VandinDev221",
+  "excludeRepos": ["portifolio", "portfolio"],
+  "overrides": [
+    {
+      "repo": "vida_saudavel",
+      "title": "Vida Saudável",
+      "description": "Plataforma PWA completa para acompanhamento de bem-estar, hábitos e métricas de saúde diárias.",
+      "longDescription": "Plataforma web desenvolvida com HTML, CSS, JavaScript, PHP e MySQL, focada em atividades diárias e bem-estar. Oferece contagem de tempo, registro de caminhadas com gráficos, organização de estudos, metas nutricionais, monitoramento de sono, jogos interativos e integração PWA para experiência nativa em dispositivos móveis.",
+      "category": "web",
+      "technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Bootstrap", "PWA", "Chart.js"],
+      "image": "./assets/images/projects/Vida-Saudável.png",
+      "featured": true
+    },
+    {
+      "repo": "anucios-bet",
+      "title": "Anúncios Bet",
+      "description": "Aplicação web para gestão e exibição de anúncios com interface moderna e deploy na Vercel.",
+      "longDescription": "Projeto web desenvolvido em JavaScript com foco em interface responsiva e experiência fluida. Publicado na Vercel com integração contínua via GitHub, demonstrando domínio em desenvolvimento frontend moderno e boas práticas de deploy.",
+      "category": "web",
+      "technologies": ["JavaScript", "HTML", "CSS", "Vercel"],
+      "image": "./assets/images/projects/anucios-bet.png",
+      "featured": true
+    },
+    {
+      "repo": "historico_escolar",
+      "title": "Histórico Escolar",
+      "description": "Sistema para gerenciar escolas e históricos escolares de um município.",
+      "longDescription": "Aplicação full stack desenvolvida em TypeScript para gestão de instituições de ensino e registros acadêmicos municipais. Inclui interface moderna, tipagem estática e deploy automatizado na Vercel.",
+      "category": "web",
+      "technologies": ["TypeScript", "React", "Node.js", "Vercel"],
+      "image": "./assets/images/projects/Histórico-Escolar.png",
+      "featured": true
+    },
+    {
+      "repo": "Habithub_Analytics",
+      "title": "Habithub Analytics",
+      "description": "Dashboard interativo para visualização de dados, métricas e hábitos com gráficos dinâmicos.",
+      "longDescription": "Dashboard analítico desenvolvido em TypeScript para monitoramento de métricas e visualização de dados. Inclui gráficos interativos, filtros e interface responsiva, ideal para acompanhamento de indicadores de desempenho.",
+      "category": "dashboard",
+      "technologies": ["TypeScript", "JavaScript", "Chart.js", "CSS", "Vercel"],
+      "image": "./assets/images/projects/Habithub-Analytics.png",
+      "featured": true
+    },
+    {
+      "repo": "landing_page_carros",
+      "title": "Landing Page Carros",
+      "description": "Landing page responsiva para apresentação de veículos com design moderno e animações.",
+      "longDescription": "Landing page desenvolvida em JavaScript com layout responsivo, seções de destaque para produtos automotivos e otimização para conversão. Deploy na Vercel com carregamento rápido e experiência mobile-first.",
+      "category": "landing",
+      "technologies": ["JavaScript", "HTML", "CSS", "Vercel"],
+      "image": "./assets/images/projects/alphacarros.png",
+      "liveUrl": "https://alphacarros.vercel.app",
+      "featured": false
+    },
+    {
+      "repo": "LandingPage",
+      "title": "Landing Page Moderna",
+      "description": "Landing page responsiva com animações suaves, formulário de contato e design clean.",
+      "longDescription": "Landing page desenvolvida com HTML5, CSS3 e JavaScript. Inclui animações suaves, formulário de contato integrado, layout responsivo e otimização para SEO e performance.",
+      "category": "landing",
+      "technologies": ["HTML5", "CSS3", "JavaScript", "Vercel"],
+      "image": "./assets/images/projects/landing-page-didactics.png",
+      "featured": false
+    }
+  ]
+}

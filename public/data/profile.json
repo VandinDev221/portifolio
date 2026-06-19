@@ -1,0 +1,20 @@
+{
+  "name": "Vanderson Carlos Andrade Lindoso",
+  "title": "Desenvolvedor Web Full Stack",
+  "tagline": "Transformando ideias em aplicações web modernas e escaláveis",
+  "bio": "Desenvolvedor web full stack com formação técnica em Desenvolvimento de Sistemas pelo IFMA e cursando Tecnologia em Desenvolvimento Web na Unopar. Especializado em HTML, CSS, JavaScript, PHP, Laravel, React, TypeScript e MySQL.\n\nAtualmente atuo em operações de data center enquanto desenvolvo projetos pessoais publicados no GitHub e Vercel — incluindo a plataforma Vida Saudável (PWA), dashboards analíticos, sistemas de gestão escolar e landing pages modernas.\n\nApaixonado por criar experiências digitais responsivas, performáticas e com foco em UX, sempre explorando novas tecnologias como Vite, Tailwind CSS e deploy contínuo.",
+  "email": "lindosovanderson@gmail.com",
+  "location": "São Luís, Maranhão, Brasil",
+  "social": {
+    "github": "https://github.com/VandinDev221",
+    "linkedin": "https://linkedin.com/in/vanderson-carlos-andrade-lindoso",
+    "website": "https://portifolio-eight-kohl-75.vercel.app",
+    "instagram": "https://www.instagram.com/vandersonandrad__",
+    "whatsapp": "https://wa.me/5598985894988"
+  },
+  "stats": {
+    "projects": 6,
+    "repos": 7,
+    "experience": 2
+  }
+}
