@@ -66,17 +66,6 @@ function mergeTechnologies(languages, overrideTech) {
   return ['Vercel'];
 }
 
-async function fetchRepoLanguages(fullName) {
-  try {
-    const response = await fetch(`https://api.github.com/repos/${fullName}/languages`);
-    if (!response.ok) return {};
-    const data = await response.json();
-    return typeof data === 'object' && data ? data : {};
-  } catch {
-    return {};
-  }
-}
-
 function gradientForRepo(repoName) {
   let hash = 0;
   for (let i = 0; i < repoName.length; i++) {
@@ -256,35 +245,26 @@ function mergeProject(repo, override, index) {
   };
 }
 
-async function fetchGithubRepos(username) {
-  const repos = [];
-  let page = 1;
+async function fetchGithubData(username) {
+  const response = await fetch(`/api/github?username=${encodeURIComponent(username)}`);
 
-  while (page <= 5) {
-    const response = await fetch(
-      `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated`
-    );
-
-    if (!response.ok) {
-      throw new Error(`GitHub API: ${response.status}`);
-    }
-
-    const batch = await response.json();
-    if (!Array.isArray(batch) || batch.length === 0) break;
-
-    repos.push(...batch);
-    if (batch.length < 100) break;
-    page += 1;
+  if (!response.ok) {
+    throw new Error(`GitHub proxy: ${response.status}`);
   }
 
-  return repos;
+  const data = await response.json();
+  if (!Array.isArray(data?.repos)) {
+    throw new Error('Resposta inválida do proxy GitHub');
+  }
+
+  return data;
 }
 
 /**
  * Carrega projetos com deploy na Vercel e mescla metadados locais
  */
 export async function syncProjectsFromVercel() {
-  const config = await fetchJSON('/data/projects.json');
+  const config = await fetchJSON('./data/projects.json');
   const username = config?.githubUsername || 'VandinDev221';
   const excludeRepos = new Set(
     (config?.excludeRepos || ['portifolio', 'portfolio']).map(name => name.toLowerCase())
@@ -292,7 +272,7 @@ export async function syncProjectsFromVercel() {
   const overrideMap = buildOverrideMap(config?.overrides || []);
 
   try {
-    const repos = await fetchGithubRepos(username);
+    const { repos, languages: languagesMap = {} } = await fetchGithubData(username);
 
     const deployed = repos
       .filter(repo => !repo.fork && !repo.private)
@@ -308,7 +288,7 @@ export async function syncProjectsFromVercel() {
     const projects = await Promise.all(
       deployed.map(async (repo, index) => {
         const override = overrideMap.get(repo.name.toLowerCase());
-        const languages = await fetchRepoLanguages(repo.full_name);
+        const languages = languagesMap[repo.name] || {};
         const project = mergeProject(repo, override, index);
         project.languages = languages;
         project.technologies = mergeTechnologies(languages, override?.technologies);
