@@ -239,26 +239,39 @@
 }
 
 .projects__card-like-btn {
-  background: none;
-  border: none;
-  padding: 0;
+  flex-shrink: 0;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--border-radius-full);
   cursor: pointer;
-  font: inherit;
-  color: inherit;
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
-.projects__card-like-btn:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
+.projects__card-like-btn:hover:not(:disabled) {
+  color: var(--color-primary);
+  background: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-accent);
 }
 
-.projects__card-like-btn--liked {
+.projects__card-like-btn--liked,
+.projects__card-like-btn:disabled {
+  color: var(--color-text-secondary);
+  border-color: var(--border-color);
+  background: var(--bg-secondary);
   cursor: default;
+  transform: none;
+  box-shadow: none;
 }
 
-.projects__card-like-btn--liked:hover {
-  transform: none;
+.projects__card-likes-count span {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
 }
 
 .projects__card-featured {

@@ -57,20 +57,23 @@ class Projects {
    * Carrega projetos automaticamente do GitHub (deploys Vercel)
    */
   async loadProjects() {
-    const { projects } = await syncProjectsFromVercel();
+    const { projects, repoCount } = await syncProjectsFromVercel();
     const remoteStats = await fetchAllStats();
     this.projects = applyStatsToProjects(projects, remoteStats);
     await this.incrementViewsOnPageAccess();
-    updateProjectStats(this.projects.length);
+    updateProjectStats({ projectCount: this.projects.length, repoCount });
   }
 
   setupLiveUpdates() {
-    this.projectsSyncTimer = startProjectsAutoSync((freshProjects) => {
+    this.projectsSyncTimer = startProjectsAutoSync((result) => {
       const previousCount = this.projects.length;
-      this.projects = applyStatsToProjects(freshProjects, null);
-      updateProjectStats(this.projects.length);
+      this.projects = applyStatsToProjects(result.projects, null);
+      updateProjectStats({
+        projectCount: this.projects.length,
+        repoCount: result.repoCount
+      });
 
-      if (freshProjects.length !== previousCount) {
+      if (result.projects.length !== previousCount) {
         this.renderProjects();
       }
     });
@@ -103,10 +106,10 @@ class Projects {
       const card = this.projectsContainer.querySelector(`[data-project-slug="${slug}"]`);
       if (!card) return;
 
-      const likeSpan = card.querySelector('.projects__card-like-btn span');
+      const likeCount = card.querySelector('[data-likes-count] span');
       const viewsStat = card.querySelector('[data-views-count]');
 
-      if (likeSpan) likeSpan.textContent = project.likes || 0;
+      if (likeCount) likeCount.textContent = project.likes || 0;
       if (viewsStat) viewsStat.textContent = `👁️ ${project.views || 0}`;
     });
   }
@@ -240,10 +243,15 @@ class Projects {
     project.likes = result.likes ?? project.likes;
     project.views = result.views ?? project.views;
 
-    const span = buttonEl.querySelector('span');
-    if (span) span.textContent = project.likes;
+    const card = buttonEl.closest('.projects__card');
+    const likeCount = card?.querySelector('[data-likes-count] span');
+    if (likeCount) likeCount.textContent = project.likes;
+
     if (result.success !== false) {
+      buttonEl.textContent = 'Curtido';
       buttonEl.classList.add('projects__card-like-btn--liked');
+      buttonEl.disabled = true;
+      buttonEl.setAttribute('aria-label', 'Projeto curtido');
     }
   }
 
@@ -306,18 +314,21 @@ class Projects {
           ` : ''}
           <div class="projects__card-footer">
             <div class="projects__card-stats">
-              <button type="button" 
-                      class="projects__card-stat projects__card-like-btn ${this.hasLiked(projectKey) ? 'projects__card-like-btn--liked' : ''}" 
-                      data-project-slug="${projectKey}" 
-                      data-likes-count
-                      onclick="event.stopPropagation()"
-                      aria-label="Curtir projeto">
+              <span class="projects__card-stat projects__card-likes-count" data-likes-count aria-label="Total de curtidas">
                 ❤️ <span>${project.likes || 0}</span>
-              </button>
+              </span>
               <span class="projects__card-stat" data-views-count>
                 👁️ ${project.views || 0}
               </span>
             </div>
+            <button type="button" 
+                    class="projects__card-like-btn ${this.hasLiked(projectKey) ? 'projects__card-like-btn--liked' : ''}" 
+                    data-project-slug="${projectKey}" 
+                    onclick="event.stopPropagation()"
+                    aria-label="${this.hasLiked(projectKey) ? 'Projeto curtido' : 'Curtir projeto'}"
+                    ${this.hasLiked(projectKey) ? 'disabled' : ''}>
+              ${this.hasLiked(projectKey) ? 'Curtido' : 'Curtir'}
+            </button>
           </div>
         </div>
       </div>

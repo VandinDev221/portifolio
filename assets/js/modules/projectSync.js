@@ -272,6 +272,11 @@ export async function syncProjectsFromVercel() {
       .filter(repo => isVercelDeploy(repo.homepage))
       .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
+    const publicRepos = repos.filter(repo => !repo.fork && !repo.private);
+    const repoCount = publicRepos.filter(
+      repo => !excludeRepos.has(repo.name.toLowerCase())
+    ).length;
+
     const projects = await Promise.all(
       deployed.map(async (repo, index) => {
         const override = overrideMap.get(repo.name.toLowerCase());
@@ -286,7 +291,7 @@ export async function syncProjectsFromVercel() {
       })
     );
 
-    return { projects, source: 'github', error: null };
+    return { projects, repoCount, source: 'github', error: null };
   } catch (error) {
     console.warn('Sincronização automática indisponível, usando overrides locais.', error);
     return buildFallbackProjects(config, overrideMap);
@@ -330,20 +335,26 @@ async function buildFallbackProjects(config, overrideMap) {
     })
   );
 
-  return { projects, source: 'fallback', error: null };
+  return { projects, repoCount: overrides.length, source: 'fallback', error: null };
 }
 
 /**
- * Atualiza contador de projetos na seção Sobre
+ * Atualiza contadores de projetos e repositórios na seção Sobre
  */
-export function updateProjectStats(count) {
+export function updateProjectStats({ projectCount, repoCount } = {}) {
   const cards = document.querySelectorAll('.about__stat-card');
 
   cards.forEach(card => {
     const label = card.querySelector('.about__stat-label');
     const number = card.querySelector('.about__stat-number');
-    if (label?.textContent?.includes('Projetos Publicados') && number) {
-      number.textContent = String(count);
+    if (!label || !number) return;
+
+    if (label.textContent.includes('Projetos Publicados') && projectCount != null) {
+      number.textContent = String(projectCount);
+    }
+
+    if (label.textContent.includes('Repositórios GitHub') && repoCount != null) {
+      number.textContent = String(repoCount);
     }
   });
 }
@@ -362,7 +373,7 @@ export function startProjectsAutoSync(onUpdate, intervalMs = PROJECTS_SYNC_INTER
 
     try {
       const result = await syncProjectsFromVercel();
-      onUpdate(result.projects);
+      onUpdate(result);
     } catch (error) {
       console.warn('Falha na sincronização automática de projetos.', error);
     } finally {
