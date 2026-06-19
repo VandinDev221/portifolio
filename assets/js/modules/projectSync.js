@@ -9,17 +9,6 @@ const IMAGE_CACHE = new Map();
 const PREVIEW_CACHE_KEY = 'portfolio_vercel_previews_v1';
 const PREVIEW_CACHE_TTL = 1000 * 60 * 60 * 12; // 12 horas
 
-const LANGUAGE_TECH = {
-  JavaScript: ['JavaScript', 'HTML', 'CSS'],
-  TypeScript: ['TypeScript', 'JavaScript'],
-  HTML: ['HTML', 'CSS', 'JavaScript'],
-  CSS: ['HTML', 'CSS'],
-  PHP: ['PHP', 'MySQL'],
-  Python: ['Python'],
-  Vue: ['Vue.js', 'JavaScript'],
-  React: ['React', 'JavaScript']
-};
-
 const GRADIENTS = [
   'linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)',
   'linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%)',
@@ -28,6 +17,14 @@ const GRADIENTS = [
   'linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)',
   'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)'
 ];
+
+const HIDDEN_LANGUAGES = new Set([
+  'Dockerfile',
+  'Shell',
+  'PowerShell',
+  'Batchfile',
+  'Nix'
+]);
 
 function formatRepoTitle(name) {
   return name
@@ -43,11 +40,41 @@ function inferCategory(repoName, homepage) {
   return 'web';
 }
 
-function buildTechnologies(language, overrideTech) {
-  if (overrideTech?.length) return overrideTech;
-  if (!language) return ['Vercel'];
-  const base = LANGUAGE_TECH[language] || [language];
-  return base.includes('Vercel') ? base : [...base, 'Vercel'];
+function mergeTechnologies(languages, overrideTech) {
+  const githubLangs = Object.keys(languages || {})
+    .filter(lang => !HIDDEN_LANGUAGES.has(lang))
+    .sort((a, b) => languages[b] - languages[a]);
+
+  if (overrideTech?.length) {
+    const merged = [...overrideTech];
+    const known = new Set(overrideTech.map(tech => tech.toLowerCase()));
+
+    for (const lang of githubLangs) {
+      if (!known.has(lang.toLowerCase())) {
+        merged.push(lang);
+        known.add(lang.toLowerCase());
+      }
+    }
+
+    return merged;
+  }
+
+  if (githubLangs.length) {
+    return githubLangs.includes('Vercel') ? githubLangs : [...githubLangs, 'Vercel'];
+  }
+
+  return ['Vercel'];
+}
+
+async function fetchRepoLanguages(fullName) {
+  try {
+    const response = await fetch(`https://api.github.com/repos/${fullName}/languages`);
+    if (!response.ok) return {};
+    const data = await response.json();
+    return typeof data === 'object' && data ? data : {};
+  } catch {
+    return {};
+  }
 }
 
 function gradientForRepo(repoName) {
@@ -216,7 +243,8 @@ function mergeProject(repo, override, index) {
     description,
     longDescription: override?.longDescription || description,
     category: override?.category || inferCategory(repoName, liveUrl),
-    technologies: buildTechnologies(repo.language, override?.technologies),
+    languages: {},
+    technologies: [],
     image: override?.image || null,
     imageGradient: override?.imageGradient || null,
     liveUrl,
@@ -280,7 +308,10 @@ export async function syncProjectsFromVercel() {
     const projects = await Promise.all(
       deployed.map(async (repo, index) => {
         const override = overrideMap.get(repo.name.toLowerCase());
+        const languages = await fetchRepoLanguages(repo.full_name);
         const project = mergeProject(repo, override, index);
+        project.languages = languages;
+        project.technologies = mergeTechnologies(languages, override?.technologies);
         const media = await resolveProjectImage(repo.name, project.image, project.liveUrl);
         project.image = media.image;
         project.imageSource = media.imageSource;
@@ -311,6 +342,7 @@ async function buildFallbackProjects(config, overrideMap) {
         longDescription: override.longDescription || override.description,
         category: override.category || 'web',
         technologies: override.technologies || [],
+        languages: {},
         image: override.image || null,
         imageGradient: override.imageGradient || null,
         liveUrl: override.liveUrl || null,

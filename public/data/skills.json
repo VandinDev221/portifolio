@@ -1,0 +1,197 @@
+{
+  "categories": [
+    { "id": "frontend", "title": "Frontend", "icon": "💻" },
+    { "id": "backend", "title": "Backend", "icon": "⚙️" },
+    { "id": "tools", "title": "Ferramentas & Deploy", "icon": "🛠️" },
+    { "id": "infra", "title": "Infraestrutura & Qualidade", "icon": "🌐" }
+  ],
+  "hiddenLanguages": ["Dockerfile", "Shell", "PowerShell", "Batchfile", "Nix"],
+  "groups": {
+    "html-css": {
+      "name": "HTML & CSS",
+      "category": "frontend",
+      "tooltip": "HTML5 semântico, CSS3, Grid e Flexbox",
+      "match": ["HTML", "HTML5", "CSS", "CSS3"]
+    }
+  },
+  "languageMeta": {
+    "JavaScript": {
+      "category": "frontend",
+      "tooltip": "JavaScript ES6+, DOM, fetch e APIs"
+    },
+    "TypeScript": {
+      "category": "frontend",
+      "tooltip": "TypeScript, tipagem estática, interfaces e generics"
+    },
+    "PHP": {
+      "category": "backend",
+      "name": "PHP",
+      "tooltip": "PHP e desenvolvimento server-side"
+    },
+    "Python": {
+      "category": "backend",
+      "tooltip": "Python e automação"
+    },
+    "Vue": {
+      "category": "frontend",
+      "name": "Vue.js",
+      "tooltip": "Vue.js e ecossistema frontend"
+    }
+  },
+  "manualSkills": [
+    {
+      "name": "React",
+      "category": "frontend",
+      "percentage": 88,
+      "tooltip": "React, hooks, componentes e estado",
+      "match": ["React"]
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "frontend",
+      "percentage": 88,
+      "tooltip": "Tailwind CSS, utility-first e design responsivo",
+      "match": ["Tailwind CSS", "Tailwind"]
+    },
+    {
+      "name": "Bootstrap",
+      "category": "frontend",
+      "percentage": 85,
+      "tooltip": "Bootstrap, componentes e layouts responsivos",
+      "match": ["Bootstrap"]
+    },
+    {
+      "name": "Chart.js",
+      "category": "frontend",
+      "percentage": 80,
+      "tooltip": "Gráficos interativos e dashboards visuais",
+      "match": ["Chart.js"]
+    },
+    {
+      "name": "PHP & Laravel",
+      "category": "backend",
+      "percentage": 85,
+      "tooltip": "PHP, Laravel, MVC e autenticação",
+      "match": ["Laravel", "PHP & Laravel"]
+    },
+    {
+      "name": "Node.js",
+      "category": "backend",
+      "percentage": 80,
+      "tooltip": "Node.js, npm e scripts server-side",
+      "match": ["Node.js", "Node"]
+    },
+    {
+      "name": "Express.js",
+      "category": "backend",
+      "percentage": 78,
+      "tooltip": "Express, rotas, middlewares e APIs",
+      "match": ["Express.js", "Express"]
+    },
+    {
+      "name": "APIs REST",
+      "category": "backend",
+      "percentage": 85,
+      "tooltip": "Criação e consumo de APIs RESTful",
+      "match": ["APIs REST", "REST", "API REST"]
+    },
+    {
+      "name": "MySQL",
+      "category": "backend",
+      "percentage": 82,
+      "tooltip": "MySQL, modelagem, joins e consultas",
+      "match": ["MySQL"]
+    },
+    {
+      "name": "Banco de Dados",
+      "category": "backend",
+      "percentage": 80,
+      "tooltip": "Modelagem relacional, CRUD e integração",
+      "match": ["Banco de Dados", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "name": "Git & GitHub",
+      "category": "tools",
+      "percentage": 90,
+      "tooltip": "Git, GitHub, branches e versionamento",
+      "match": ["Git", "GitHub"]
+    },
+    {
+      "name": "Vite",
+      "category": "tools",
+      "percentage": 85,
+      "tooltip": "Vite, bundling e otimização de build",
+      "match": ["Vite"]
+    },
+    {
+      "name": "Vercel",
+      "category": "tools",
+      "percentage": 88,
+      "tooltip": "Deploy contínuo, domínios e preview",
+      "match": ["Vercel"]
+    },
+    {
+      "name": "PWA",
+      "category": "tools",
+      "percentage": 82,
+      "tooltip": "Service workers, manifest e offline-first",
+      "match": ["PWA"]
+    },
+    {
+      "name": "SEO",
+      "category": "tools",
+      "percentage": 78,
+      "tooltip": "Meta tags, sitemap e otimização orgânica",
+      "match": ["SEO"]
+    },
+    {
+      "name": "Cursor",
+      "category": "tools",
+      "percentage": 92,
+      "tooltip": "Cursor, IA assistida e produtividade no código",
+      "match": ["Cursor"]
+    },
+    {
+      "name": "UX / UI Design",
+      "category": "infra",
+      "percentage": 80,
+      "tooltip": "Layout, usabilidade e experiência do usuário",
+      "match": ["UX", "UI", "UX/UI"]
+    },
+    {
+      "name": "Design Responsivo",
+      "category": "infra",
+      "percentage": 90,
+      "tooltip": "Mobile-first, breakpoints e adaptação",
+      "match": ["Design Responsivo", "Responsivo"]
+    },
+    {
+      "name": "Acessibilidade",
+      "category": "infra",
+      "percentage": 75,
+      "tooltip": "ARIA, semântica e navegação inclusiva",
+      "match": ["Acessibilidade", "ARIA"]
+    },
+    {
+      "name": "Redes de Computadores",
+      "category": "infra",
+      "percentage": 78,
+      "tooltip": "Configuração, manutenção e suporte de redes",
+      "match": ["Redes"]
+    },
+    {
+      "name": "Data Center",
+      "category": "infra",
+      "percentage": 75,
+      "tooltip": "Operações, monitoramento e infraestrutura",
+      "match": ["Data Center"]
+    },
+    {
+      "name": "Análise de Dados",
+      "category": "infra",
+      "percentage": 72,
+      "tooltip": "Interpretação de métricas e indicadores",
+      "match": ["Análise de Dados", "Analytics"]
+    }
+  ]
+}

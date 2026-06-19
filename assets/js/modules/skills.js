@@ -1,7 +1,9 @@
 /**
  * Módulo de Habilidades
- * Gerencia animação de barras de progresso e tooltips
+ * Renderiza skills a partir das linguagens dos projetos no GitHub
  */
+
+import { renderSkillsGrid, syncSkillsFromProjects } from './skillsSync.js';
 
 class Skills {
   constructor() {
@@ -11,8 +13,37 @@ class Skills {
   }
 
   init() {
-    this.setupProgressBars();
-    this.setupTooltips();
+    this.showLoading();
+    document.addEventListener('portfolio:projects-synced', (event) => {
+      this.renderFromProjects(event.detail?.projects || []);
+    });
+  }
+
+  showLoading() {
+    if (!this.skillsContainer) return;
+    this.skillsContainer.innerHTML = `
+      <p class="skills__loading" style="grid-column: 1 / -1; text-align: center; color: var(--color-text-secondary);">
+        Analisando linguagens dos projetos no GitHub...
+      </p>
+    `;
+  }
+
+  async renderFromProjects(projects) {
+    if (!this.skillsContainer) return;
+
+    try {
+      const categories = await syncSkillsFromProjects(projects);
+      renderSkillsGrid(this.skillsContainer, categories);
+      this.setupProgressBars();
+      this.setupTooltips();
+    } catch (error) {
+      console.warn('Falha ao montar habilidades dos projetos.', error);
+      this.skillsContainer.innerHTML = `
+        <p class="skills__loading" style="grid-column: 1 / -1; text-align: center; color: var(--color-text-secondary);">
+          Não foi possível carregar as habilidades automaticamente.
+        </p>
+      `;
+    }
   }
 
   /**

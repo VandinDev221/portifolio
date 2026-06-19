@@ -62,6 +62,13 @@ class Projects {
     this.projects = applyStatsToProjects(projects, remoteStats);
     await this.incrementViewsOnPageAccess();
     updateProjectStats({ projectCount: this.projects.length, repoCount });
+    this.dispatchProjectsSynced();
+  }
+
+  dispatchProjectsSynced() {
+    document.dispatchEvent(new CustomEvent('portfolio:projects-synced', {
+      detail: { projects: this.projects }
+    }));
   }
 
   setupLiveUpdates() {
@@ -72,6 +79,7 @@ class Projects {
         projectCount: this.projects.length,
         repoCount: result.repoCount
       });
+      this.dispatchProjectsSynced();
 
       if (result.projects.length !== previousCount) {
         this.renderProjects();
