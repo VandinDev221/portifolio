@@ -34,6 +34,7 @@ class Skills {
     try {
       const categories = await syncSkillsFromProjects(projects);
       renderSkillsGrid(this.skillsContainer, categories);
+      this.revealSkillsSection();
       this.setupProgressBars();
       this.setupTooltips();
     } catch (error) {
@@ -44,6 +45,16 @@ class Skills {
         </p>
       `;
     }
+  }
+
+  revealSkillsSection() {
+    const section = this.skillsContainer?.closest('.section');
+    if (section) section.classList.add('section-visible');
+
+    this.skillsContainer.querySelectorAll('[data-animate-stagger]').forEach((el, index) => {
+      el.style.animationDelay = `${index * 80}ms`;
+      el.classList.add('animated');
+    });
   }
 
   /**

@@ -131,6 +131,8 @@ function buildUsageMap(projects, config) {
 }
 
 export function buildSkillsFromProjects(projects, config) {
+  if (!config) return [];
+
   const skills = buildUsageMap(projects, config);
   const categoryMap = new Map(
     (config.categories || []).map(category => [
@@ -191,6 +193,6 @@ export function renderSkillsGrid(container, categories) {
 }
 
 export async function syncSkillsFromProjects(projects) {
-  const config = await fetchJSON('/data/skills.json');
+  const config = await fetchJSON('./data/skills.json');
   return buildSkillsFromProjects(projects, config);
 }

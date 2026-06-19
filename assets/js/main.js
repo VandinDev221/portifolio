@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Inicializa módulos
   const navigation = new Navigation();
+  const skills = new Skills();
   const projects = new Projects();
   const animations = new Animations();
   const interactions = new Interactions();
   const theme = new Theme();
   const contact = new Contact();
-  const skills = new Skills();
   const experience = new Experience();
 
   // Performance
